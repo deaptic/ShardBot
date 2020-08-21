@@ -1,0 +1,33 @@
+{
+  "name": "shardbot",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js",
+    "test": "tsc",
+    "watch": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deaptic/ShardBot.git"
+  },
+  "author": "Teo Temonen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deaptic/ShardBot/issues"
+  },
+  "homepage": "https://github.com/deaptic/ShardBot#readme",
+  "dependencies": {
+    "@types/node": "^14.6.0",
+    "@types/ws": "^7.2.6",
+    "axios": "^0.20.0",
+    "dayjs": "^1.8.34",
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "ts-node": "^8.10.2"
+  }
+}
