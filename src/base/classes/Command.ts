@@ -1,4 +1,4 @@
-import { PermissionString } from 'discord.js';
+import { Client, Message, PermissionString } from 'discord.js';
 
 export default class Command {
   public name: string;
@@ -9,6 +9,7 @@ export default class Command {
   public guildOnly: boolean;
   public aliases: string[];
   public userPermissions: PermissionString[];
+  public execute?(c: Client, m: Message, a: string[]): Promise<void>;
 
   constructor ({
     name = 'No name provided',
