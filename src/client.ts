@@ -2,6 +2,9 @@ import { Client } from 'discord.js';
 import { lstatSync, readdirSync } from 'fs';
 import path from 'path';
 import { commands } from './base/collections/commands';
+import * as mongoose from './base/database/mongoose';
+
+import './base/structures/Guild';
 
 export default class Bot {
 
@@ -18,6 +21,7 @@ export default class Bot {
     try {
       await this.client.login(process.env.DISCORD_API_TOKEN);
       console.log(`Client login as ${this.client.user?.tag}`);
+      mongoose.init();
     } catch (e) {
       console.error(e);
     }
@@ -29,7 +33,6 @@ export default class Bot {
       const stat = lstatSync(path.join(__dirname, directory, file));
       if (stat.isDirectory()) {
         this.registerFiles(path.join(directory, file));
-        return;
       } else {
         const importFile = await import(path.join(__dirname, directory, file));
         const instance = new importFile.default();

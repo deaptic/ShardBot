@@ -1,6 +1,7 @@
 import { Client, Message } from 'discord.js';
 import Event from '../base/classes/Event';
 import { commands } from '../base/collections/commands';
+import GuildExtension from '../base/structures/Guild';
 
 export default class MessageEvent extends Event {
 
@@ -9,9 +10,11 @@ export default class MessageEvent extends Event {
   }
 
   public async execute(client: Client, message: Message) {
-    const prefix = '.';
-    if (message.content.startsWith(prefix)) {
-      const args = message.content.slice(prefix.length).split(/ +/g);
+    const guild = message.guild as GuildExtension;
+    const database = await guild.database;
+
+    if (message.content.startsWith(database.prefix)) {
+      const args = message.content.slice(database.prefix.length).split(/ +/g);
       const commandName = args.shift()?.toLowerCase()!;
       const command = commands.get(commandName) || commands.find(cmd => cmd.aliases.includes(commandName));
 
