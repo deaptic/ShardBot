@@ -1,15 +1,14 @@
-import { Client, Collection } from 'discord.js';
+import { Client } from 'discord.js';
 import { lstatSync, readdirSync } from 'fs';
 import path from 'path';
+import { commands } from './base/collections/commands';
 
 export default class Bot {
 
   public client: Client;
-  public commands: Collection<string, unknown>;
 
   constructor () {
     this.client = new Client();
-    this.commands = new Collection();
   }
 
   public async init() {
@@ -33,12 +32,12 @@ export default class Bot {
         return;
       } else {
         const importFile = await import(path.join(__dirname, directory, file));
-        const instance = new importFile.default(this.client);
+        const instance = new importFile.default();
 
         if (instance.type) {
-          this.client.on(instance.type, (...args) => instance.execute(...args));
+          this.client.on(instance.type, (...args) => instance.execute(this.client, ...args));
         } else {
-          this.commands.set(instance.name, instance);
+          commands.set(instance.name, instance);
         }
       }
     }

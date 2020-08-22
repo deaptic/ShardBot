@@ -1,7 +1,3 @@
-import Bot from '../../client';
-
-export default class Event extends Bot {
-  constructor (public type = 'raw') {
-    super();
-  }
+export default class Event {
+  constructor (public type = 'raw') { }
 }
