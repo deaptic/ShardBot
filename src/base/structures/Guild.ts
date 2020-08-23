@@ -1,5 +1,5 @@
 import { Structures, Client, Guild } from 'discord.js';
-import { guild } from '../database/database';
+import { guild } from '../database/guilds';
 
 Structures.extend('Guild', Guild => {
   class GuildExtension extends Guild {
