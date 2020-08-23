@@ -14,7 +14,7 @@ export default async function autoRole(member: GuildMember) {
     const hasRole = member.roles.cache.find(r => r.id === database.autoRole);
 
     if (isRole && !hasRole) {
-      member.roles.add(isRole);
+      member.roles.add(isRole).catch(e => console.error(e.message));
     }
   }
 }

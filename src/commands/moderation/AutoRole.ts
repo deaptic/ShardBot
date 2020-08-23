@@ -8,7 +8,7 @@ export default class Prefix extends Command {
     super({
       name: 'autorole',
       description: 'Check or set an automatically assigned role',
-      usage: ['parameter:set|del', 'role:id|roleName'],
+      usage: ['parameter:set|delete', 'role:id|name'],
       category: 'Moderation',
       userPermissions: ['ADMINISTRATOR']
     });
@@ -64,14 +64,14 @@ export default class Prefix extends Command {
     }
 
     // Delete autoRole
-    if (param === 'del') {
+    if (param === 'delete') {
       database.autoRole = undefined;
       await database.save();
       message.channel.send(`AutoRole has been cleared`).catch(console.error);
       return;
     }
 
-    message.channel.send(`You didn\'t provide a correct parameter, try using \`set\` or \`del\``).catch(console.error);
+    message.channel.send(`You didn\'t provide a correct parameter, try using \`set\` or \`delete\``).catch(console.error);
     return;
   }
 }
