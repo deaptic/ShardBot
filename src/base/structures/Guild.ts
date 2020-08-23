@@ -6,7 +6,7 @@ Structures.extend('Guild', Guild => {
 
     public database: Promise<any>;
 
-    constructor (client: Client, data: any) {
+    constructor (client: Client, data: { unavailable: boolean, id: string, shardID: number; }) {
       super(client, data);
       this.database = this.getByID(data.id);
     }
