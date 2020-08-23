@@ -6,6 +6,7 @@ export default class Ping extends Command {
     super({
       name: 'ping',
       description: 'API response time',
+      category: 'Miscellaneous',
       aliases: ['latency'],
     });
   }
