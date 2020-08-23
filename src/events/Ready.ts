@@ -1,5 +1,6 @@
 import { Client } from 'discord.js';
 import Event from '../base/classes/Event';
+import autoRole from '../base/functions/autoRole';
 
 export default class ReadyEvent extends Event {
 
@@ -17,5 +18,13 @@ export default class ReadyEvent extends Event {
     catch (e) {
       console.error(e);
     }
+
+    // Assign autoRoles
+    client.guilds.cache.forEach(guild => {
+      if (!guild.me?.hasPermission('MANAGE_ROLES')) return;
+      guild.members.cache.forEach(member => {
+        autoRole(member);
+      });
+    });
   }
 }
