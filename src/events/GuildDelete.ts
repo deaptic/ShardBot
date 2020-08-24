@@ -1,6 +1,7 @@
-import { Client, Guild } from 'discord.js';
+import { Client } from 'discord.js';
 import Event from '../base/classes/Event';
 import presenceUpdater from '../base/functions/presenceUpdater';
+import GuildExtension from '../base/structures/Guild';
 
 export default class GuildDeleteEvent extends Event {
 
@@ -8,7 +9,12 @@ export default class GuildDeleteEvent extends Event {
     super('guildDelete');
   }
 
-  public async execute(client: Client, guild: Guild) {
+  public async execute(client: Client, guild: GuildExtension) {
+    const database = await guild.database;
+
+    // Remove guild from database
+    await database.delete();
+
     // Update presence
     presenceUpdater(client);
   }
