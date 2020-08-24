@@ -6,7 +6,7 @@ export default async function presenceUpdater(client: Client) {
 
   client.user?.setPresence({
     activity: {
-      name: `${guildCount} ${guildCount > 1 ? 'servers' : 'server'}!`,
+      name: `${guildCount} servers!`,
       type: 'WATCHING',
     }
   });
