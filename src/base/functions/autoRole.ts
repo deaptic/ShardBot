@@ -10,11 +10,13 @@ export default async function autoRole(member: GuildMember) {
 
     if (!guild.me?.hasPermission('MANAGE_ROLES')) return;
 
+    const botHighestRole = member.guild.me?.roles.highest!;
     const isRole = member.guild.roles.cache.find(r => r.id === database.autoRole);
     const hasRole = member.roles.cache.find(r => r.id === database.autoRole);
 
     if (isRole && !hasRole) {
-      member.roles.add(isRole).catch(e => console.error(e.message));
+      if (botHighestRole.position < isRole.position) return;
+      member.roles.add(isRole).catch(console.error);
     }
   }
 }
