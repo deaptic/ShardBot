@@ -1,6 +1,7 @@
 import { Client } from 'discord.js';
 import Event from '../base/classes/Event';
 import autoRole from '../base/functions/autoRole';
+import presenceUpdater from '../base/functions/presenceUpdater';
 
 export default class ReadyEvent extends Event {
 
@@ -26,5 +27,8 @@ export default class ReadyEvent extends Event {
         autoRole(member);
       });
     });
+
+    // Set presence
+    presenceUpdater(client);
   }
 }
