@@ -6,7 +6,7 @@ export default class Ping extends Command {
     super({
       name: 'invite',
       description: 'Responds with bot invite link',
-      category: 'General',
+      category: 'Miscellaneous',
     });
   }
 

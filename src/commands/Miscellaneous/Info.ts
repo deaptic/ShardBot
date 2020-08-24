@@ -6,7 +6,7 @@ export default class Info extends Command {
     super({
       name: 'info',
       description: 'Responds with bot information',
-      category: 'General',
+      category: 'Miscellaneous',
     });
   }
 
