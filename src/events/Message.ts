@@ -14,7 +14,7 @@ export default class MessageEvent extends Event {
     const database = await guild.database;
 
     if (message.content.startsWith(database.prefix)) {
-      const args = message.content.slice(database.prefix.length).match(/\w\S+|"[^"]+"/g);
+      const args = message.content.slice(database.prefix.length).match(/(["'])(?:(?=(\\?))\2.)*?\1|(?<=\s|^)(.*?)(?=\s|$)/g);
       if (!args) return;
       const commandName = args.shift()?.toLowerCase()!;
       const command = commands.get(commandName) || commands.find(cmd => cmd.aliases.includes(commandName));
