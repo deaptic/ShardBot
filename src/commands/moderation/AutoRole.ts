@@ -10,7 +10,7 @@ export default class AutoRole extends Command {
       description: 'set an automatically assigned role',
       usage: ['parameter:set|delete', 'role:id'],
       category: 'Moderation',
-      userPermissions: ['ADMINISTRATOR']
+      userPermissions: ['MANAGE_ROLES']
     });
   }
 
