@@ -3,7 +3,7 @@ import { Client, Message } from "discord.js";
 import GuildExtension from '../../base/structures/Guild';
 import { eventTypes } from '../../base/data/loggerEvents.json';
 
-export default class MemberJoin extends Command {
+export default class Logger extends Command {
   constructor () {
     super({
       name: 'logger',
