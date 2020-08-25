@@ -5,7 +5,7 @@ export default class LiveRole extends Command {
   constructor () {
     super({
       name: 'liverole',
-      description: 'set an automatically assigned live role',
+      description: 'Set automatically assigned temporary role for streamers',
       usage: ['<set/delete> <RoleID>'],
       category: 'Moderation',
       userPermissions: ['MANAGE_ROLES'],

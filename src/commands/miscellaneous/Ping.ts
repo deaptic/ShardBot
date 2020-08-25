@@ -5,7 +5,7 @@ export default class Ping extends Command {
   constructor () {
     super({
       name: 'ping',
-      description: 'API response time',
+      description: 'Responds with API response time',
       category: 'Miscellaneous',
       aliases: ['latency'],
     });

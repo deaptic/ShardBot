@@ -7,7 +7,7 @@ export default class AutoRole extends Command {
   constructor () {
     super({
       name: 'autorole',
-      description: 'set an automatically assigned role',
+      description: 'Set automatically assigned role',
       usage: ['<set/delete> <RoleID>'],
       category: 'Moderation',
       userPermissions: ['MANAGE_ROLES'],

@@ -6,7 +6,7 @@ export default class Prefix extends Command {
   constructor () {
     super({
       name: 'prefix',
-      description: 'Shows command prefix of the current server, or lets administrator to change it',
+      description: 'Show and manage guild prefix',
       usage: ['<newPrefix>'],
       category: 'Moderation',
       userPermissions: ['ADMINISTRATOR']

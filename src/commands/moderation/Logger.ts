@@ -7,7 +7,7 @@ export default class Logger extends Command {
   constructor () {
     super({
       name: 'logger',
-      description: 'Set log channel or add log events',
+      description: 'Setup logging channel and manage logged events',
       usage: ['<channel> <set/delete> <ChannelID>', '<event> <add/remove> <EventType>', '<reset>'],
       category: 'Moderation',
       aliases: ['log'],
