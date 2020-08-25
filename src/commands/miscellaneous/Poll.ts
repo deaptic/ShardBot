@@ -6,7 +6,7 @@ export default class Poll extends Command {
     super({
       name: 'poll',
       description: 'Create reaction poll of up to 10 answers',
-      usage: ['Topic', 'Option<2-10>'],
+      usage: ['<Topic>', '<Option[2-10]>'],
       category: 'Miscellaneous',
       guildOnly: true,
     });

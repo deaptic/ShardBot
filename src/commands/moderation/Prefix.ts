@@ -7,7 +7,7 @@ export default class Prefix extends Command {
     super({
       name: 'prefix',
       description: 'Shows command prefix of the current server, or lets administrator to change it',
-      usage: ['newPrefix'],
+      usage: ['<newPrefix>'],
       category: 'Moderation',
       userPermissions: ['ADMINISTRATOR']
     });
