@@ -68,10 +68,12 @@ export default class Logger extends Command {
               return;
             }
 
-            const hasEvent = database.log.events.find((e: string) => e === args[2]);
-            if (hasEvent) {
-              message.channel.send(`Logger has this event already`).catch(console.error);
-              return;
+            if (database.log.events) {
+              const hasEvent = database.log.events.find((e: string) => e === args[2]);
+              if (hasEvent) {
+                message.channel.send(`Logger has this event already`).catch(console.error);
+                return;
+              }
             }
 
             database.log.events.push(isEvent);
