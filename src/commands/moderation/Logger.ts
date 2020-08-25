@@ -10,6 +10,7 @@ export default class MemberJoin extends Command {
       description: 'Set log channel or add log events',
       usage: ['channel set|delete ChannelID', 'event add|remove EventType'],
       category: 'Moderation',
+      aliases: ['log'],
       userPermissions: ['ADMINISTRATOR'],
       guildOnly: true
     });
