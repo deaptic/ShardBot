@@ -11,7 +11,7 @@ export default class Logger extends Command {
       usage: ['channel|event|reset', 'set|delete / add|remove', 'ChannelID / EventType'],
       category: 'Moderation',
       aliases: ['log'],
-      userPermissions: ['ADMINISTRATOR'],
+      userPermissions: ['MANAGE_CHANNELS'],
       guildOnly: true
     });
   }
