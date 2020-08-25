@@ -6,8 +6,8 @@ const Guild = new mongoose.Schema({
   autoRole: String,
   liveRole: String,
   log: {
-    memberJoin: String,
-    memberLeft: String
+    channel: String,
+    events: Array,
   }
 });
 
