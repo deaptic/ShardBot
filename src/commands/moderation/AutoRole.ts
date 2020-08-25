@@ -8,7 +8,7 @@ export default class AutoRole extends Command {
     super({
       name: 'autorole',
       description: 'set an automatically assigned role',
-      usage: ['parameter:set|delete', 'role:id'],
+      usage: ['set|delete', 'RoleID'],
       category: 'Moderation',
       userPermissions: ['MANAGE_ROLES'],
       guildOnly: true

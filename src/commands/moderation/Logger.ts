@@ -8,7 +8,7 @@ export default class MemberJoin extends Command {
     super({
       name: 'logger',
       description: 'Set log channel or add log events',
-      usage: ['channel set|delete ChannelID', 'event add|remove EventType'],
+      usage: ['channel|event', 'set|delete / add|remove', 'ChannelID / EventType'],
       category: 'Moderation',
       aliases: ['log'],
       userPermissions: ['ADMINISTRATOR'],

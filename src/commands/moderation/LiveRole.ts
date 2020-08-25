@@ -6,7 +6,7 @@ export default class LiveRole extends Command {
     super({
       name: 'liverole',
       description: 'set an automatically assigned live role',
-      usage: ['parameter:set|delete', 'role:id'],
+      usage: ['set|delete', 'RoleID'],
       category: 'Moderation',
       userPermissions: ['MANAGE_ROLES'],
       guildOnly: true
