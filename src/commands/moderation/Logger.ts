@@ -8,7 +8,7 @@ export default class MemberJoin extends Command {
     super({
       name: 'logger',
       description: 'Set log channel or add log events',
-      usage: ['channel|event', 'set|delete / add|remove', 'ChannelID / EventType'],
+      usage: ['channel|event|reset', 'set|delete / add|remove', 'ChannelID / EventType'],
       category: 'Moderation',
       aliases: ['log'],
       userPermissions: ['ADMINISTRATOR'],
@@ -102,6 +102,11 @@ export default class MemberJoin extends Command {
         }
         break;
 
+      case 'reset':
+        database.log = undefined;
+        database.save();
+        message.channel.send(`Logger reset to defaults`).catch(console.error);
+        break;
       default:
         message.channel.send(`You didn\'t provide a correct parameter, try using \`channel\` or \`event\``).catch(console.error);
         break;
