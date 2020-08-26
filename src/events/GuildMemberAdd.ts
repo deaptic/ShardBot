@@ -1,7 +1,7 @@
 import { Client, GuildMember } from 'discord.js';
 import Event from '../base/classes/Event';
 import autoRole from '../base/functions/autoRole';
-import memberJoin from '../base/functions/memberJoin';
+import { memberJoin } from '../base/functions/loggerMessages';
 import GuildExtension from '../base/structures/Guild';
 
 export default class ReadyEvent extends Event {

@@ -1,6 +1,6 @@
 import { Client, GuildMember } from 'discord.js';
 import Event from '../base/classes/Event';
-import memberLeft from '../base/functions/memberLeft';
+import { memberLeft } from '../base/functions/loggerMessages';
 import GuildExtension from '../base/structures/Guild';
 
 export default class ReadyEvent extends Event {
