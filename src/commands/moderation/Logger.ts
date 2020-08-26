@@ -8,7 +8,7 @@ export default class Logger extends Command {
     super({
       name: 'logger',
       description: 'Setup logging channel and manage logged events',
-      usage: ['<channel> <set/delete> <ChannelID>', '<event> <add/remove> <EventType>', '<reset>'],
+      usage: ['<channel> <set/delete> <Channel:ID>', '<event> <add/remove> <Event:EventType>', '<reset>'],
       category: 'Moderation',
       aliases: ['log'],
       userPermissions: ['MANAGE_CHANNELS'],

@@ -7,7 +7,7 @@ export default class Help extends Command {
     super({
       name: 'help',
       description: 'Shows help about all or one specific command',
-      usage: ['<Command>'],
+      usage: ['<Command:Text>'],
       category: 'Miscellaneous',
     });
   }
