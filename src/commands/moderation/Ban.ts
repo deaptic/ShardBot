@@ -31,7 +31,6 @@ export default class Ban extends Command {
     }
 
     args.splice(0, 1);
-    if (args.length) args[0].replace(/"/g, '');
 
     let reason = '';
     if (args.length) {
