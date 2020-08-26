@@ -57,45 +57,68 @@ export default class Logger extends Command {
       case 'event':
         switch (args[1]) {
           case 'add':
-            if (!args[2]) {
+            args.splice(0, 2);
+            if (!args.length) {
               message.channel.send(`Please provide an event type. Available events: \`${eventTypes}\``).catch(console.error);
               return;
             }
 
-            const isEvent = eventTypes.find(e => e === args[2]);
-            if (!isEvent) {
-              message.channel.send(`Please provide valid event type. Available events: \`${eventTypes}\``).catch(console.error);
+            let addedEvents: string[] = [];
+            args.forEach(event => {
+              const isEvent = eventTypes.find(e => e === event);
+              if (!isEvent) return;
+
+              if (!database.log.events) {
+                database.log.events.push(isEvent);
+                addedEvents.push(isEvent);
+                return;
+              }
+
+              const hasEvent = database.log.events.find((e: string) => e === event);
+              if (hasEvent) return;
+
+              database.log.events.push(isEvent);
+              addedEvents.push(isEvent);
+            });
+
+            if (!addedEvents.length) {
+              message.channel.send(`No new events added`).catch(console.error);
               return;
             }
 
-            if (database.log.events) {
-              const hasEvent = database.log.events.find((e: string) => e === args[2]);
-              if (hasEvent) {
-                message.channel.send(`Logger has this event already`).catch(console.error);
-                return;
-              }
-            }
-
-            database.log.events.push(isEvent);
-            database.save();
-            message.channel.send(`Added \`${isEvent}\` event for logging`).catch(console.error);
+            await database.save();
+            message.channel.send(`Added logger events:\n\`\`\`${addedEvents.sort().join(', ')}\`\`\``).catch(console.error);
             break;
 
           case 'remove':
-            if (!args[2]) {
+            args.splice(0, 2);
+
+            if (!args.length) {
               message.channel.send(`Please provide an event type. Available events: \`${eventTypes}\``).catch(console.error);
               return;
             }
 
-            const hasTheEvent = database.log.events.find((e: string) => e === args[2]);
-            if (!hasTheEvent) {
-              message.channel.send(`Could not find that event from the list`).catch(console.error);
+            let removedEvents: string[] = [];
+            args.forEach(event => {
+              const isEvent = eventTypes.find(e => e === event);
+              if (!isEvent) return;
+
+              if (!database.log.events) return;
+
+              const hasEvent = database.log.events.find((e: string) => e === event);
+              if (!hasEvent) return;
+
+              database.log.events.pull(isEvent);
+              removedEvents.push(isEvent);
+            });
+
+            if (!removedEvents.length) {
+              message.channel.send(`No new events removed`).catch(console.error);
               return;
             }
 
-            database.log.events.pull(hasTheEvent);
-            database.save();
-            message.channel.send(`Removed \`${hasTheEvent}\` event from logging`).catch(console.error);
+            await database.save();
+            message.channel.send(`Removed logger events:\n\`\`\`${removedEvents.sort().join(', ')}\`\`\``).catch(console.error);
             break;
 
           case 'list':
