@@ -1,6 +1,8 @@
 {
   "eventTypes": [
     "memberJoin",
-    "memberLeft"
+    "memberLeft",
+    "memberBanned",
+    "memberUnbanned"
   ]
 }
