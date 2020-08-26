@@ -31,6 +31,7 @@ export default class Roll extends Command {
       .addField('Question', question, true)
       .addField('Wisdom', answer, true);
 
+    if (message.deletable) message.delete().catch(console.error);
     message.channel.send(embed).catch(console.error);
   }
 }
