@@ -3,6 +3,8 @@
     "memberJoin",
     "memberLeft",
     "memberBanned",
-    "memberUnbanned"
+    "memberUnbanned",
+    "messageDelete",
+    "messageUpdate"
   ]
 }

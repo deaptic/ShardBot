@@ -1,4 +1,4 @@
-import { GuildMember, MessageEmbed, Guild, User } from 'discord.js';
+import { GuildMember, MessageEmbed, Guild, User, Message } from 'discord.js';
 
 // memberJoin
 export async function memberJoin(member: GuildMember) {
@@ -32,6 +32,27 @@ export async function memberUnbanned(guild: Guild, user: User) {
   const embed = new MessageEmbed()
     .setColor('ORANGE')
     .setAuthor(`${user.tag} has been unbanned!`, user.displayAvatarURL() ?? user.defaultAvatarURL);
+
+  return embed;
+}
+
+// messageDelete
+export async function messageDelete(message: Message) {
+  const embed = new MessageEmbed()
+    .setColor('YELLOW')
+    .setAuthor(`${message.author.tag} deleted a message!`, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
+    .addField('Content', message.content);
+
+  return embed;
+}
+
+// messageUpdate
+export async function messageUpdate(oldMessage: Message, newMessage: Message) {
+  const embed = new MessageEmbed()
+    .setColor('YELLOW')
+    .setAuthor(`${oldMessage.author.tag} updated a message!`, oldMessage.author.displayAvatarURL() ?? oldMessage.author.defaultAvatarURL)
+    .addField('From', oldMessage.content)
+    .addField('To', newMessage.content);
 
   return embed;
 }
