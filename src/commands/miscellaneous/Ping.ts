@@ -7,7 +7,7 @@ export default class Ping extends Command {
       name: 'ping',
       description: 'Responds with API response time',
       category: 'Miscellaneous',
-      aliases: ['latency'],
+      aliases: ['latency', 'lat'],
     });
   }
 
