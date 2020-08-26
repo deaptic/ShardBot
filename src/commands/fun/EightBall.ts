@@ -2,7 +2,7 @@ import Command from '../../base/classes/Command';
 import { Client, Message, MessageEmbed } from "discord.js";
 import { answers } from '../../base/data/EightBall.json';
 
-export default class Roll extends Command {
+export default class EightBall extends Command {
   constructor () {
     super({
       name: '8ball',

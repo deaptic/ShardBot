@@ -7,7 +7,7 @@ export default class Prefix extends Command {
     super({
       name: 'prefix',
       description: 'Show and manage guild prefix',
-      usage: ['<Prefix:Text>'],
+      usage: ['<Prefix?:Text>'],
       category: 'Moderation',
       userPermissions: ['ADMINISTRATOR']
     });
