@@ -54,8 +54,13 @@ export default class Help extends Command {
       usages = command.name;
     }
 
+    let aliases = '';
+    if (command.aliases.length) {
+      aliases = `(${command.aliases.sort().join('/')})`;
+    }
+
     const embed = new MessageEmbed()
-      .setTitle(command.name)
+      .setTitle(`${command.name} ${aliases}`)
       .setDescription(command.description)
       .addField('Usage', `\`\`\`${usages}\`\`\``);
 
