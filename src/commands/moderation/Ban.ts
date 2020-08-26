@@ -8,7 +8,8 @@ export default class Ban extends Command {
       description: 'Bans a member',
       usage: ['<User:ID> <Reason?:Text>'],
       category: 'Moderation',
-      userPermissions: ['BAN_MEMBERS']
+      userPermissions: ['BAN_MEMBERS'],
+      guildOnly: true
     });
   }
 
