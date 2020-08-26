@@ -30,7 +30,7 @@ export default class Kick extends Command {
     }
 
     args.splice(0, 1);
-    args[0].replace(/"/g, '');
+    if (args.length) args[0].replace(/"/g, '');
 
     let reason = '';
     if (args.length) {
