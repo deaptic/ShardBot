@@ -40,7 +40,7 @@ export async function memberUnbanned(guild: Guild, user: User) {
 export async function messageDelete(message: Message) {
   const embed = new MessageEmbed()
     .setColor('YELLOW')
-    .setAuthor(`${message.author.tag} deleted a message!`, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
+    .setAuthor(`${message.author.tag}'s message got deleted!`, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
     .addField('Content', message.content);
 
   return embed;
