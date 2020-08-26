@@ -11,4 +11,4 @@ const Guild = new mongoose.Schema({
   }
 });
 
-export const guild = mongoose.model('Guild', Guild);
+export const guild = mongoose.model('Guilds', Guild);
