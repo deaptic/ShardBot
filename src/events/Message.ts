@@ -28,7 +28,10 @@ export default class MessageEvent extends Event {
 
       if (!command) return;
 
-      if (!command.enabled) return;
+      if (!command.enabled) {
+        message.channel.send('This command is currently disabled!').catch(console.error);
+        return;
+      }
 
       if (!command.userPermissions.every(permission => message.member?.permissions.toArray().includes(permission))) {
         message.channel.send(`You don't have permissions to run this command!`).catch(console.error);
@@ -40,7 +43,10 @@ export default class MessageEvent extends Event {
         return;
       }
 
-      if (!command.execute) return;
+      if (!command.execute) {
+        message.channel.send('Command does not have execute function. Might be a bot owner\'s mistake!');
+        return;
+      }
 
       try {
         command.execute(client, message, args);

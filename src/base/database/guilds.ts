@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const Guild = new mongoose.Schema({
+const schema = new mongoose.Schema({
   _id: String,
   prefix: { type: String, default: '!' },
   autoRole: String,
@@ -18,4 +18,4 @@ const Guild = new mongoose.Schema({
   ]
 });
 
-export const guild = mongoose.model('Guilds', Guild);
+export const guild = mongoose.model('Guilds', schema);

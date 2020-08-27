@@ -50,7 +50,7 @@ export async function messageDelete(message: Message) {
 export async function messageUpdate(oldMessage: Message, newMessage: Message) {
   const embed = new MessageEmbed()
     .setColor('YELLOW')
-    .setAuthor(`${oldMessage.author.tag} updated a message!`, oldMessage.author.displayAvatarURL() ?? oldMessage.author.defaultAvatarURL)
+    .setAuthor(`${oldMessage.author.tag} updated a message!`, oldMessage.author.displayAvatarURL() ?? oldMessage.author.defaultAvatarURL, newMessage.url)
     .addField('From', oldMessage.content)
     .addField('To', newMessage.content);
 
