@@ -12,8 +12,7 @@ const schema = new mongoose.Schema({
   customCommands: [
     {
       name: String,
-      content: String,
-      triggers: [String]
+      content: String
     }
   ]
 });
