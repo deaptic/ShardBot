@@ -14,6 +14,13 @@ const schema = new mongoose.Schema({
       name: String,
       content: String
     }
+  ],
+  triggers: [
+    {
+      command: String,
+      triggerType: String,
+      trigger: String
+    }
   ]
 });
 

@@ -1,6 +1,7 @@
 import { Client, Message } from 'discord.js';
 import Event from '../base/classes/Event';
 import { commands } from '../base/collections/commands';
+import triggers from '../base/functions/triggers';
 import GuildExtension from '../base/structures/Guild';
 
 export default class MessageEvent extends Event {
@@ -14,6 +15,8 @@ export default class MessageEvent extends Event {
     const database = await guild.database;
 
     if (message.author.bot) return;
+
+    await triggers(message);
 
     if (message.content.startsWith(database.prefix)) {
       const args = message.content.slice(database.prefix.length).match(/".*?"|[^\s]+/g);

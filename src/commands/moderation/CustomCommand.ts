@@ -39,6 +39,11 @@ export default class CustomCommand extends Command {
           return;
         }
 
+        if (database.customCommands.length > 50) {
+          message.channel.send('This guild already has maximum number of custom commands!').catch(console.error);
+          return;
+        }
+
         const newCommand = {
           name: args[1].toLowerCase(),
           content: args.slice(2).join(' ')
