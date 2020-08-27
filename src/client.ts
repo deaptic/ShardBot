@@ -11,7 +11,7 @@ export default class Bot {
   public client: Client;
 
   constructor () {
-    this.client = new Client();
+    this.client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
   }
 
   public async init() {

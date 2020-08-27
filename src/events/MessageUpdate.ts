@@ -16,6 +16,7 @@ export default class MessageUpdateEvent extends Event {
     // Log event
     const logChannel: any = guild.channels.cache.find(c => c.id === database.log.channel);
     const hasEvent = database.log.events.find((e: string) => e === 'messageUpdate');
+    if (oldMessage.partial) return;
     if (oldMessage.content === newMessage.content) return;
     if (logChannel && hasEvent) logChannel.send(await messageUpdate(oldMessage, newMessage)).catch(console.error);
   }
