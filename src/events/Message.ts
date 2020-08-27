@@ -22,7 +22,7 @@ export default class MessageEvent extends Event {
 
       const customCommand = database.customCommands.find((cmd: any) => cmd.name === commandName);
       if (customCommand) {
-        message.channel.send(customCommand.content);
+        message.channel.send(customCommand.content).catch(console.error);
         return;
       }
 

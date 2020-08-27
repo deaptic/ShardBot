@@ -9,7 +9,7 @@ export default class CustomCommand extends Command {
       name: 'customcommand',
       description: 'Create custom commands',
       usage: [
-        '<add/remove> <Command:Text> <Content:Text/Syntax>',
+        '<add/remove> <Command:Text> <Content:Text>',
         '<list>'
       ],
       category: 'Moderation',

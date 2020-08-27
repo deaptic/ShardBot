@@ -9,7 +9,7 @@ export default async function triggers(message: Message) {
     if (!command.triggers) return;
     for await (const trigger of command.triggers) {
       if (message.content.includes(trigger)) {
-        message.channel.send(command.content);
+        message.channel.send(command.content).catch(console.error);
       }
     }
   }
