@@ -1,6 +1,7 @@
 import { Client, Message } from 'discord.js';
 import Event from '../base/classes/Event';
 import { commands } from '../base/collections/commands';
+import triggers from '../base/functions/triggers';
 import GuildExtension from '../base/structures/Guild';
 
 export default class MessageEvent extends Event {
@@ -18,6 +19,12 @@ export default class MessageEvent extends Event {
       if (!args) return;
       const commandName = args.shift()?.toLowerCase()!;
       const command = commands.get(commandName) || commands.find(cmd => cmd.aliases.includes(commandName));
+
+      const customCommand = database.customCommands.find((cmd: any) => cmd.name === commandName);
+      if (customCommand) {
+        message.channel.send(customCommand.content);
+        return;
+      }
 
       if (!command) return;
 
@@ -41,6 +48,8 @@ export default class MessageEvent extends Event {
         console.error(e);
         message.channel.send(`There was an error trying to execute that command!`).catch(console.error);
       }
+    } else {
+      triggers(message);
     }
   }
 }
