@@ -14,7 +14,7 @@ export default class Logger extends Command {
         '<event> <list>',
         '<reset>'
       ],
-      category: 'Moderation',
+      category: 'Management',
       aliases: ['log'],
       userPermissions: ['MANAGE_CHANNELS'],
       guildOnly: true

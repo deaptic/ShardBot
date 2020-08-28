@@ -7,7 +7,7 @@ export default class Throw extends Command {
     super({
       name: 'throw',
       description: 'Throws things to a specified target',
-      usage: ['<Target:Text>'],
+      usage: ['<Target?:Text>'],
       category: 'Fun',
     });
   }

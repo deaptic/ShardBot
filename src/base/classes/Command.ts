@@ -9,7 +9,7 @@ export default class Command {
   public guildOnly: boolean;
   public aliases: string[];
   public userPermissions: PermissionString[];
-  public execute?(c: Client, m: Message, a: string[]): Promise<void>;
+  public execute?(client: Client, message: Message, args: string[]): Promise<void>;
 
   constructor ({
     name = 'No name provided',

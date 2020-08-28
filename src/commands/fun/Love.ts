@@ -6,7 +6,7 @@ export default class Love extends Command {
     super({
       name: 'love',
       description: 'Calculates a chance of love between you and some one (or something)',
-      usage: ['<Target:Text>'],
+      usage: ['<Target?:Text>'],
       category: 'Fun',
     });
   }

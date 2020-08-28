@@ -7,7 +7,7 @@ export default class LiveRole extends Command {
       name: 'liverole',
       description: 'Set automatically assigned temporary role for streamers',
       usage: ['<set/delete> <Role:ID>'],
-      category: 'Moderation',
+      category: 'Management',
       userPermissions: ['MANAGE_ROLES'],
       guildOnly: true
     });

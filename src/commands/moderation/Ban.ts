@@ -37,7 +37,7 @@ export default class Ban extends Command {
       reason = `for a reason: \`${args.join(' ')}\``;
     }
 
-    member.kick(reason).then(() => {
+    member.ban({ reason }).then(() => {
       message.channel.send(`\`${member.user.username}\` has been banned ${reason}`).catch(console.error);
     }).catch(console.error);
   }

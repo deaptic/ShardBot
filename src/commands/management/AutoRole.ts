@@ -9,7 +9,7 @@ export default class AutoRole extends Command {
       name: 'autorole',
       description: 'Set automatically assigned role',
       usage: ['<set/delete> <Role:ID>'],
-      category: 'Moderation',
+      category: 'Management',
       userPermissions: ['MANAGE_ROLES'],
       guildOnly: true
     });

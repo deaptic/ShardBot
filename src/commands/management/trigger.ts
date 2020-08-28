@@ -12,7 +12,7 @@ export default class CustomCommand extends Command {
         '<add/remove> <Command:CommandName> <Type:TriggerType> <Trigger:Text>',
         '<list>'
       ],
-      category: 'Moderation',
+      category: 'Management',
       aliases: ['tr'],
       userPermissions: ['ADMINISTRATOR'],
       guildOnly: true

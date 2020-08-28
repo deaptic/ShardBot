@@ -12,7 +12,7 @@ export default class CustomCommand extends Command {
         '<add/remove> <Command:Text> <Content:Text>',
         '<list>'
       ],
-      category: 'Moderation',
+      category: 'Management',
       aliases: ['cc', 'command'],
       userPermissions: ['ADMINISTRATOR'],
       guildOnly: true
