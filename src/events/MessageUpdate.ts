@@ -13,6 +13,8 @@ export default class MessageUpdateEvent extends Event {
     const guild = oldMessage.guild as GuildExtension;
     const database = await guild.database;
 
+    if (!oldMessage.guild) return;
+
     // Log event
     const logChannel: any = guild.channels.cache.find(c => c.id === database.log.channel);
     const hasEvent = database.log.events.find((e: string) => e === 'messageUpdate');

@@ -41,7 +41,8 @@ export async function messageDelete(message: Message) {
   const embed = new MessageEmbed()
     .setColor('YELLOW')
     .setAuthor(`${message.author.tag}'s message got deleted!`, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
-    .addField('Content', message.content);
+    .addField('Channel', message.channel, true)
+    .addField('Content', message.content ? message.content : null, true);
 
   return embed;
 }
@@ -51,8 +52,8 @@ export async function messageUpdate(oldMessage: Message, newMessage: Message) {
   const embed = new MessageEmbed()
     .setColor('YELLOW')
     .setAuthor(`${oldMessage.author.tag} updated a message!`, oldMessage.author.displayAvatarURL() ?? oldMessage.author.defaultAvatarURL, newMessage.url)
-    .addField('From', oldMessage.content)
-    .addField('To', newMessage.content);
+    .addField('From', oldMessage.content ? oldMessage.content : null)
+    .addField('To', newMessage.content ? newMessage.content : null);
 
   return embed;
 }

@@ -13,10 +13,16 @@ export default class MessageDeleteEvent extends Event {
     const guild = message.guild as GuildExtension;
     const database = await guild.database;
 
+    if (!message.guild) return;
+
     // Log event
     const logChannel: any = guild.channels.cache.find(c => c.id === database.log.channel);
     const hasEvent = database.log.events.find((e: string) => e === 'messageDelete');
     if (message.partial) return;
+
+    // Ignore commands
+    if (message.content.startsWith(database.prefix)) return;
+
     if (logChannel && hasEvent) logChannel.send(await messageDelete(message)).catch(console.error);
   }
 }
