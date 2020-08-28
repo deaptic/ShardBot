@@ -49,6 +49,11 @@ export default class CustomCommand extends Command {
           }
         }
 
+        if (database.triggers.length > 50) {
+          message.channel.send('This guild already has maximum number of triggers!').catch(console.error);
+          return;
+        }
+
         const newTrigger = {
           command: args[1],
           triggerType: args[2],
