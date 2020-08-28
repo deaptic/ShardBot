@@ -15,18 +15,18 @@ export default class Ban extends Command {
 
   public async execute(client: Client, message: Message, args: string[]) {
     if (!args.length) {
-      message.channel.send(`You did not provide a member to ban`).catch(console.error);
+      message.channel.send(`You did not provide a user id`).catch(console.error);
       return;
     }
 
     const member = message.guild?.members.cache.find(member => member.id === args[0]);
     if (!member) {
-      message.channel.send(`Could not find that member, try using valid UserID`).catch(console.error);
+      message.channel.send(`Could not find that user. A valid user id needed`).catch(console.error);
       return;
     }
 
     if (!member.bannable) {
-      message.channel.send(`Sorry but I cannot do that. Check my permissions`).catch(console.error);
+      message.channel.send(`Cannot do that. Check my permissions`).catch(console.error);
       return;
     }
 

@@ -21,7 +21,7 @@ export default class Poll extends Command {
     if (args.length < 2) {
       const embed = new MessageEmbed()
         .setColor('YELLOW')
-        .setAuthor(message.author.username, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
+        .setAuthor(`${message.author.username} started a simple poll! 📊`, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
         .setTitle(args[0].replace(/"/g, ''));
 
       if (message.deletable) message.delete().catch(console.error);
@@ -34,7 +34,7 @@ export default class Poll extends Command {
 
 
     if (args.length > 11) {
-      message.channel.send('You do really like answers huh? The limit is 10 options per poll').catch(console.error);
+      message.channel.send('You do really like answers, huh? The limit is ten options per a poll').catch(console.error);
       return;
     }
 
@@ -46,7 +46,7 @@ export default class Poll extends Command {
 
     const embed = new MessageEmbed()
       .setColor('GREEN')
-      .setAuthor(message.author.username, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
+      .setAuthor(`${message.author.username} started an advanced poll! 📊`, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
       .setTitle(args[0].replace(/"/g, ''))
       .setDescription(options.replace(/"/g, ''));
 

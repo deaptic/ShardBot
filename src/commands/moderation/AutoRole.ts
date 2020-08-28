@@ -22,7 +22,7 @@ export default class AutoRole extends Command {
     switch (args[0]) {
       case 'set':
         if (!args[1]) {
-          message.channel.send(`Please provide a role id you want to set to autoRole`).catch(console.error);
+          message.channel.send(`Please provide a valid role id`).catch(console.error);
           return;
         }
 
@@ -34,7 +34,7 @@ export default class AutoRole extends Command {
 
         database.autoRole = isRole.id;
         await database.save();
-        message.channel.send(`New autoRole set`).catch(console.error);
+        message.channel.send(`AutoRole has been added`).catch(console.error);
 
         message.guild?.members.cache.forEach(member => {
           autoRole(member);
