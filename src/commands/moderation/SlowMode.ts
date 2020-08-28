@@ -6,7 +6,7 @@ export default class SlowMode extends Command {
     super({
       name: 'slowmode',
       description: 'Enables or Disables slowmode in a channel',
-      usage: ['<Duration?:Number>'],
+      usage: ['<Interval?:Number>'],
       category: 'Moderation',
       userPermissions: ['MANAGE_CHANNELS'],
       guildOnly: true
@@ -18,11 +18,11 @@ export default class SlowMode extends Command {
     if (rateLimitPerUser > 21600) rateLimitPerUser = 21600;
 
     let reason = args.slice(1).join(' ');
-    if (!reason.length) reason = 'No reason specified';
+    if (!reason.length) reason = 'no specified reason';
 
     const channel = message.channel as TextChannel;
     await channel.setRateLimitPerUser(rateLimitPerUser, reason).then(() => {
-      message.channel.send(`Slowmode has been set to \`${rateLimitPerUser}\` for ${reason}`);
-    });
+      message.channel.send(`Slowmode has been set to \`${rateLimitPerUser}s\` for \`${reason}\``);
+    }).catch(console.error);
   }
 }

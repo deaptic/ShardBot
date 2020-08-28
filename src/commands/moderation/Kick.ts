@@ -30,15 +30,11 @@ export default class Kick extends Command {
       return;
     }
 
-    args.splice(0, 1);
-
-    let reason = '';
-    if (args.length) {
-      reason = `for a reason: \`${args.join(' ')}\``;
-    }
+    let reason = args.slice(1).join(' ');
+    if (!reason.length) reason = 'no specified reason';
 
     member.kick(reason).then(() => {
-      message.channel.send(`\`${member.user.username}\` has been kicked ${reason}`).catch(console.error);
+      message.channel.send(`\`${member.user.username}\` has been kicked for \`${reason}\``).catch(console.error);
     }).catch(console.error);
   }
 }
