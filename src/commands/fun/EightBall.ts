@@ -7,29 +7,22 @@ export default class EightBall extends Command {
     super({
       name: '8ball',
       description: 'Wisdom from legendary 8ball',
-      usage: ['<Question:Text>'],
+      usage: ['<Question?:Text>'],
       category: 'Fun',
     });
   }
 
   public async execute(client: Client, message: Message, args: string[]) {
-    if (!args.length) {
-      message.channel.send('You did not provide a question').catch(console.error);
-      return;
-    }
-
-    if (args.length === 1) args[0].replace(/"/g, '');
-
+    const question = args.length ? args.join(' ') : 'What ever you wanted to ask.';
     const index = Math.floor(Math.random() * answers.length);
     const answer = answers[index];
 
-    const question = args.join(' ');
 
     const embed = new MessageEmbed()
       .setColor('YELLOW')
-      .setAuthor(message.author.username, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
-      .addField('Question', question, true)
-      .addField('Wisdom', answer, true);
+      .setAuthor(`${message.author.username} is seeking advice 🎱`, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
+      .addField('Question', question)
+      .addField('Wisdom', answer);
 
     if (message.deletable) message.delete().catch(console.error);
     message.channel.send(embed).catch(console.error);
