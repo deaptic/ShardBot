@@ -5,7 +5,7 @@ export default class Ban extends Command {
   constructor () {
     super({
       name: 'clean',
-      description: 'Delete a specified number of messages from chat',
+      description: 'Deletes up to 100 messages from chat',
       usage: ['<Limit:Number> <User?:ID>'],
       category: 'Moderation',
       userPermissions: ['MANAGE_MESSAGES'],
@@ -35,11 +35,9 @@ export default class Ban extends Command {
 
     channel.messages.fetch({ limit }).then(messages => {
       const userMessages = messages.filter(m => m.author.id === target.id);
-      userMessages.forEach(msg => {
-        if (!msg.deletable) return;
-        msg.delete().catch(console.error);
-      });
-      message.channel.send(`Deleted \`${userMessages.size}\` messages from ${target}`);
+      channel.bulkDelete(userMessages).then(() => {
+        message.channel.send(`Deleted \`${userMessages.size}\` messages from ${target}`);
+      }).catch(console.error);
     });
   }
 }
