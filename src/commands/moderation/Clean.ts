@@ -8,6 +8,7 @@ export default class Ban extends Command {
       description: 'Deletes up to 100 messages from chat',
       usage: ['<Limit:Number> <User?:ID>'],
       category: 'Moderation',
+      aliases: ['clear', 'cl', 'purge'],
       userPermissions: ['MANAGE_MESSAGES'],
       guildOnly: true
     });
@@ -28,7 +29,7 @@ export default class Ban extends Command {
     const channel = message.channel as TextChannel;
     if (!target) {
       channel.bulkDelete(limit).then(messages => {
-        message.channel.send(`Bulk deleted \`${messages.size}\` messages`).catch(console.error);
+        message.channel.send(`Deleted \`${messages.size}\` messages`).catch(console.error);
       }).catch(console.error);
       return;
     }
@@ -36,7 +37,7 @@ export default class Ban extends Command {
     channel.messages.fetch({ limit }).then(messages => {
       const userMessages = messages.filter(m => m.author.id === target.id);
       channel.bulkDelete(userMessages).then(() => {
-        message.channel.send(`Deleted \`${userMessages.size}\` messages from ${target}`);
+        message.channel.send(`Deleted \`${userMessages.size}\` messages from ${target}`).catch(console.error);
       }).catch(console.error);
     });
   }
