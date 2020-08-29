@@ -1,4 +1,4 @@
-import { GuildMember, MessageEmbed, Guild, User, Message } from 'discord.js';
+import { GuildMember, MessageEmbed, Guild, User, Message, Snowflake, Collection } from 'discord.js';
 
 // memberJoin
 export async function memberJoin(member: GuildMember) {
@@ -43,6 +43,17 @@ export async function messageDelete(message: Message) {
     .setAuthor(`${message.author.tag}'s message got deleted!`, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
     .addField('Channel', message.channel, true)
     .addField('Content', message.content ? message.content : null, true);
+
+  return embed;
+}
+
+// messageDeleteBulk
+export async function messageDeleteBulk(messages: Collection<Snowflake, Message>) {
+  const embed = new MessageEmbed()
+    .setColor('YELLOW')
+    .setAuthor(`Messages bulk deleted!`)
+    .addField('Channel', messages.first()?.channel, true)
+    .addField('Amount', messages.size, true);
 
   return embed;
 }

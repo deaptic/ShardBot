@@ -5,6 +5,7 @@
     "memberBanned",
     "memberUnbanned",
     "messageDelete",
+    "messageDeleteBulk",
     "messageUpdate"
   ]
 }
