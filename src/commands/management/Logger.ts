@@ -16,8 +16,9 @@ export default class Logger extends Command {
       ],
       category: 'Management',
       aliases: ['log'],
+      guildOnly: true,
       userPermissions: ['MANAGE_CHANNELS'],
-      guildOnly: true
+      botPermissions: ['SEND_MESSAGES', 'MANAGE_CHANNELS'],
     });
   }
 

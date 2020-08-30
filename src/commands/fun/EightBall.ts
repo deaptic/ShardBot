@@ -9,6 +9,7 @@ export default class EightBall extends Command {
       description: 'Wisdom from legendary 8ball',
       usage: ['<Question?:Text>'],
       category: 'Fun',
+      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

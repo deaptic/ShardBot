@@ -9,6 +9,7 @@ export default class Command {
   public guildOnly: boolean;
   public aliases: string[];
   public userPermissions: PermissionString[];
+  public botPermissions: PermissionString[];
   public execute?(client: Client, message: Message, args: string[]): Promise<void>;
 
   constructor ({
@@ -20,6 +21,7 @@ export default class Command {
     guildOnly = false,
     aliases = new Array(),
     userPermissions = new Array(),
+    botPermissions = new Array(),
   }) {
     this.name = name;
     this.description = description;
@@ -29,5 +31,6 @@ export default class Command {
     this.guildOnly = guildOnly;
     this.aliases = aliases;
     this.userPermissions = userPermissions;
+    this.botPermissions = botPermissions;
   }
 }

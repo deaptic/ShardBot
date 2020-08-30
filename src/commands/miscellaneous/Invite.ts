@@ -7,6 +7,7 @@ export default class Ping extends Command {
       name: 'invite',
       description: 'Responds with bot invite link',
       category: 'Miscellaneous',
+      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

@@ -8,8 +8,9 @@ export default class SlowMode extends Command {
       description: 'Enables or Disables slowmode in a channel',
       usage: ['<Interval?:Number>'],
       category: 'Moderation',
+      guildOnly: true,
       userPermissions: ['MANAGE_CHANNELS'],
-      guildOnly: true
+      botPermissions: ['SEND_MESSAGES', 'MANAGE_CHANNELS'],
     });
   }
 

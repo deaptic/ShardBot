@@ -8,8 +8,9 @@ export default class Kick extends Command {
       description: 'Kicks a member',
       usage: ['<User:ID> <Reason?:Text>'],
       category: 'Moderation',
+      guildOnly: true,
       userPermissions: ['KICK_MEMBERS'],
-      guildOnly: true
+      botPermissions: ['SEND_MESSAGES', 'KICK_MEMBERS'],
     });
   }
 

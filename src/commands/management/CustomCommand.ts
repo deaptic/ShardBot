@@ -14,8 +14,9 @@ export default class CustomCommand extends Command {
       ],
       category: 'Management',
       aliases: ['cc', 'command'],
+      guildOnly: true,
       userPermissions: ['ADMINISTRATOR'],
-      guildOnly: true
+      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

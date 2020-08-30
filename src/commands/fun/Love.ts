@@ -8,6 +8,7 @@ export default class Love extends Command {
       description: 'Calculates a chance of love between you and some one (or something)',
       usage: ['<Target?:Text>'],
       category: 'Fun',
+      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

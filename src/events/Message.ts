@@ -32,8 +32,10 @@ export default class MessageEvent extends Event {
 
       if (!command) return;
 
-      if (!command.enabled) {
-        message.channel.send('This command is currently disabled!').catch(console.error);
+      if (!command.enabled) return;
+
+      if (!command.botPermissions.every(permission => message.guild?.me?.permissions.toArray().includes(permission))) {
+        message.channel.send(`Bot does not have enough permissions!\nPermissions needed: \`${command.botPermissions.join(', ')}\``).catch(console.error);
         return;
       }
 

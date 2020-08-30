@@ -9,8 +9,9 @@ export default class Ban extends Command {
       usage: ['<Limit:Number> <User?:ID>'],
       category: 'Moderation',
       aliases: ['clear', 'cl', 'purge'],
+      guildOnly: true,
       userPermissions: ['MANAGE_MESSAGES'],
-      guildOnly: true
+      botPermissions: ['SEND_MESSAGES', 'MANAGE_MESSAGES'],
     });
   }
 

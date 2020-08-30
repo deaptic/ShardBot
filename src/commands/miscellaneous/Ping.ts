@@ -8,6 +8,7 @@ export default class Ping extends Command {
       description: 'Responds with API response time',
       category: 'Miscellaneous',
       aliases: ['latency', 'lat'],
+      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

@@ -9,8 +9,9 @@ export default class Prefix extends Command {
       description: 'Show and manage guild prefix',
       usage: ['<Prefix?:Text>'],
       category: 'Management',
+      guildOnly: true,
       userPermissions: ['ADMINISTRATOR'],
-      guildOnly: true
+      botPermissions: ['SEND_MESSAGES'],
     });
   }
 
