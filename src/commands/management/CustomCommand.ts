@@ -67,12 +67,6 @@ export default class CustomCommand extends Command {
           return;
         }
 
-        for await (const trigger of database.triggers) {
-          if (trigger.command === isCommand.name) {
-            database.triggers.pull(trigger);
-          }
-        }
-
         database.customCommands.pull(isCommand);
         await database.save();
         message.channel.send('Command has been removed!').catch(console.error);

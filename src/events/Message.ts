@@ -1,7 +1,6 @@
 import { Client, Message } from 'discord.js';
 import Event from '../base/classes/Event';
 import { commands } from '../base/collections/commands';
-import triggers from '../base/functions/triggers';
 import GuildExtension from '../base/structures/Guild';
 
 export default class MessageEvent extends Event {
@@ -16,19 +15,17 @@ export default class MessageEvent extends Event {
 
     if (message.author.bot) return;
 
-    await triggers(message);
+    for (const command of database.customCommands) {
+      if (message.content.startsWith(command.name)) {
+        message.channel.send(command.content).catch(console.error);
+      }
+    }
 
     if (message.content.startsWith(database.prefix)) {
       const args = message.content.slice(database.prefix.length).match(/".*?"|[^\s]+/g);
       if (!args) return;
       const commandName = args.shift()?.toLowerCase()!;
       const command = commands.get(commandName) || commands.find(cmd => cmd.aliases.includes(commandName));
-
-      const customCommand = database.customCommands.find((cmd: any) => cmd.name === commandName);
-      if (customCommand) {
-        message.channel.send(customCommand.content).catch(console.error);
-        return;
-      }
 
       if (!command) return;
 
