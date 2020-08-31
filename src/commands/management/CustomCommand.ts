@@ -46,7 +46,7 @@ export default class CustomCommand extends Command {
         }
 
         const newCommand = {
-          name: args[1].toLowerCase(),
+          name: args[1],
           content: args.slice(2).join(' ')
         };
 
