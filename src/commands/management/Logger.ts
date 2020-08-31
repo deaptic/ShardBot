@@ -45,7 +45,7 @@ export default class Logger extends Command {
 
             database.log.channel = channel.id;
             await database.save();
-            message.channel.send(`${channel} is set to be a logging channel`).catch(console.error);
+            message.channel.send(`${channel} has set to be a logging channel`).catch(console.error);
             break;
 
           case 'delete':

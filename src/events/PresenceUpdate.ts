@@ -1,4 +1,4 @@
-import { Client, Presence } from 'discord.js';
+import { Client, Presence, TextChannel } from 'discord.js';
 import Event from '../base/classes/Event';
 import GuildExtension from '../base/structures/Guild';
 
@@ -12,17 +12,39 @@ export default class ReadyEvent extends Event {
     const guild = newPresence.guild as GuildExtension;
     const database = await guild.database;
 
-    if (database.liveRole) {
-      const isLive = newPresence.activities.find(a => a.type === 'STREAMING');
-      const isRole = newPresence.guild?.roles.cache.find(r => r.id === database.liveRole);
-      const hasRole = newPresence.member?.roles.cache.find(r => r.id === database.liveRole);
-      const botHighestRole = newPresence.guild?.me?.roles.highest.position!;
+    const wasStreaming = oldPresence.activities.find(a => a.type === 'STREAMING');
+    const isStreaming = newPresence.activities.find(a => a.type === 'STREAMING');
 
-      if (!newPresence.guild?.me?.hasPermission('MANAGE_ROLES')) return;
-      if (isRole && botHighestRole < isRole.position) return;
+    const announcementChannel = newPresence.guild?.channels.cache.find(c => c.id === database.liveAnnouncements.channel);
+    const listedUser = database.liveAnnouncements.users.find((u: string) => u === newPresence.user?.id);
 
-      if (isLive && isRole && !hasRole) newPresence.member?.roles.add(isRole).catch(console.error);
-      if (!isLive && isRole && hasRole) newPresence.member?.roles.remove(isRole).catch(console.error);
+    const guildHasRole = newPresence.guild?.roles.cache.find(r => r.id === database.liveRole);
+    const memberHasRole = newPresence.member?.roles.cache.find(r => r.id === database.liveRole);
+
+    const botHasSendPermission = newPresence.guild?.me?.hasPermission(['SEND_MESSAGES']);
+    const botHasRolesPermission = newPresence.guild?.me?.hasPermission(['MANAGE_ROLES']);
+    const botHasHighestRole = newPresence.guild?.me?.roles.highest.position!;
+
+    console.log(isStreaming);
+
+    if (wasStreaming && isStreaming) return;
+    if (!wasStreaming && isStreaming) {
+      // Announcement
+      if (announcementChannel && listedUser && botHasSendPermission) {
+        const channel = announcementChannel as TextChannel;
+        channel.send(`@everyone, ${newPresence.user?.username} went live at ${isStreaming.url}`);
+      }
+
+      // Add Role
+      if (botHasRolesPermission && guildHasRole && guildHasRole.position < botHasHighestRole && !memberHasRole) {
+        newPresence.member?.roles.add(guildHasRole).catch(console.error);
+      }
+    }
+    if (wasStreaming && !isStreaming) {
+      // Remove role
+      if (botHasRolesPermission && guildHasRole && guildHasRole.position < botHasHighestRole && memberHasRole) {
+        newPresence.member?.roles.remove(guildHasRole).catch(console.error);
+      }
     }
   }
 }

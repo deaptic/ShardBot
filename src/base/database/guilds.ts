@@ -5,6 +5,10 @@ const schema = new mongoose.Schema({
   prefix: { type: String, default: '!' },
   autoRole: String,
   liveRole: String,
+  liveAnnouncements: {
+    channel: String,
+    users: [String],
+  },
   log: {
     channel: String,
     events: Array,
