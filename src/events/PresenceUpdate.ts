@@ -25,24 +25,22 @@ export default class ReadyEvent extends Event {
     const botHasRolesPermission = newPresence.guild?.me?.hasPermission(['MANAGE_ROLES']);
     const botHasHighestRole = newPresence.guild?.me?.roles.highest.position!;
 
-    console.log(isStreaming);
-
-    if (wasStreaming && isStreaming) return;
     if (!wasStreaming && isStreaming) {
       // Announcement
       if (announcementChannel && listedUser && botHasSendPermission) {
         const channel = announcementChannel as TextChannel;
         channel.send(`@everyone, ${newPresence.user?.username} went live at ${isStreaming.url}`);
       }
+    }
 
+    if (guildHasRole && botHasRolesPermission && guildHasRole.position < botHasHighestRole) {
       // Add Role
-      if (botHasRolesPermission && guildHasRole && guildHasRole.position < botHasHighestRole && !memberHasRole) {
+      if (isStreaming && !memberHasRole) {
         newPresence.member?.roles.add(guildHasRole).catch(console.error);
       }
-    }
-    if (wasStreaming && !isStreaming) {
+
       // Remove role
-      if (botHasRolesPermission && guildHasRole && guildHasRole.position < botHasHighestRole && memberHasRole) {
+      if (!isStreaming && memberHasRole) {
         newPresence.member?.roles.remove(guildHasRole).catch(console.error);
       }
     }
