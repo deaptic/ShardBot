@@ -12,7 +12,7 @@ export default class ReadyEvent extends Event {
     const guild = newPresence.guild as GuildExtension;
     const database = await guild.database;
 
-    const wasStreaming = oldPresence.activities?.find(a => a.type === 'STREAMING');
+    const wasStreaming = oldPresence?.activities.find(a => a.type === 'STREAMING');
     const isStreaming = newPresence.activities.find(a => a.type === 'STREAMING');
 
     const announcementChannel = newPresence.guild?.channels.cache.find(c => c.id === database.liveAnnouncements.channel);
