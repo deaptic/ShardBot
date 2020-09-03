@@ -17,6 +17,6 @@ export default class Info extends Command {
       .setDescription(process.env.npm_package_description)
       .addField('Version', process.env.npm_package_version);
 
-    message.channel.send(embed).catch(console.error);
+    message.channel.send(embed).catch(e => console.error(e.message));
   }
 }

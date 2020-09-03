@@ -21,6 +21,6 @@ export default class EightBall extends Command {
     const index = Math.floor(Math.random() * answers.length);
     const answer = answers[index];
 
-    message.channel.send(answer).catch(console.error);
+    message.channel.send(answer).catch(e => console.error(e.message));
   }
 }

@@ -1,4 +1,4 @@
-import { Client, GuildMember } from 'discord.js';
+import { Client, GuildMember, TextChannel } from 'discord.js';
 import Event from '../base/classes/Event';
 import autoRole from '../base/functions/autoRole';
 import { memberJoin } from '../base/functions/loggerMessages';
@@ -15,9 +15,9 @@ export default class ReadyEvent extends Event {
     const database = await guild.database;
 
     // Log event
-    const logChannel: any = member.guild.channels.cache.find(c => c.id === database.log.channel);
+    const logChannel = member.guild.channels.cache.find(c => c.id === database.log.channel) as TextChannel;
     const hasEvent = database.log.events.find((e: string) => e === 'memberJoin');
-    if (logChannel && hasEvent) logChannel.send(await memberJoin(member)).catch(console.error);
+    if (logChannel && hasEvent) logChannel.send(await memberJoin(member)).catch(e => console.error(e.message));
 
     // Assign role to a new member
     autoRole(member);

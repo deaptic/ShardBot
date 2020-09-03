@@ -16,6 +16,6 @@ export default class Love extends Command {
     const target = args.length ? args.join(' ') : author;
     const chance = Math.floor(Math.random() * 100) + 1;
 
-    message.channel.send(`There's ${chance}% chance of 💕 between ${author} and ${target}`).catch(console.error);
+    message.channel.send(`There's ${chance}% chance of 💕 between ${author} and ${target}`).catch(e => console.error(e.message));
   }
 }

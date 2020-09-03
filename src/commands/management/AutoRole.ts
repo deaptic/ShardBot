@@ -23,19 +23,19 @@ export default class AutoRole extends Command {
     switch (args[0]) {
       case 'set':
         if (!args[1]) {
-          message.channel.send(`Please provide a valid role id`).catch(console.error);
+          message.channel.send(`Please provide a valid role id`).catch(e => console.error(e.message));
           return;
         }
 
         const isRole = message.guild?.roles.cache.find(role => role.id === args[1]);
         if (!isRole) {
-          message.channel.send('Could not find that role!').catch(console.error);
+          message.channel.send('Could not find that role!').catch(e => console.error(e.message));
           return;
         }
 
         database.autoRole = isRole.id;
         await database.save();
-        message.channel.send(`AutoRole has been added`).catch(console.error);
+        message.channel.send(`AutoRole has been added`).catch(e => console.error(e.message));
 
         message.guild?.members.cache.forEach(member => {
           autoRole(member);
@@ -45,11 +45,11 @@ export default class AutoRole extends Command {
       case 'delete':
         database.autoRole = undefined;
         await database.save();
-        message.channel.send(`AutoRole has been cleared`).catch(console.error);
+        message.channel.send(`AutoRole has been cleared`).catch(e => console.error(e.message));
         break;
 
       default:
-        message.channel.send(`You didn\'t provide a correct parameter, try using \`set\` or \`delete\``).catch(console.error);
+        message.channel.send(`You didn\'t provide a correct parameter, try using \`set\` or \`delete\``).catch(e => console.error(e.message));
         break;
     }
   }

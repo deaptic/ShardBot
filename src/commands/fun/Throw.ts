@@ -18,6 +18,6 @@ export default class Throw extends Command {
     const index = Math.floor(Math.random() * throwables.length);
     const threw = throwables[index];
 
-    message.channel.send(`**${author}** threw **${threw}** at **${target}**`).catch(console.error);
+    message.channel.send(`**${author}** threw **${threw}** at **${target}**`).catch(e => console.error(e.message));
   }
 }

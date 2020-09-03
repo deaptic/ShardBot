@@ -1,4 +1,4 @@
-import { Client, Message } from 'discord.js';
+import { Client, Message, TextChannel } from 'discord.js';
 import Event from '../base/classes/Event';
 import { messageUpdate } from '../base/functions/loggerMessages';
 import GuildExtension from '../base/structures/Guild';
@@ -16,10 +16,10 @@ export default class MessageUpdateEvent extends Event {
     if (!oldMessage.guild) return;
 
     // Log event
-    const logChannel: any = guild.channels.cache.find(c => c.id === database.log.channel);
+    const logChannel = guild.channels.cache.find(c => c.id === database.log.channel) as TextChannel;
     const hasEvent = database.log.events.find((e: string) => e === 'messageUpdate');
     if (oldMessage.partial) return;
     if (oldMessage.content === newMessage.content) return;
-    if (logChannel && hasEvent) logChannel.send(await messageUpdate(oldMessage, newMessage)).catch(console.error);
+    if (logChannel && hasEvent) logChannel.send(await messageUpdate(oldMessage, newMessage)).catch(e => console.error(e.message));
   }
 }

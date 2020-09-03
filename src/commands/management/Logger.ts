@@ -33,29 +33,29 @@ export default class Logger extends Command {
             if (!args[2]) {
               database.log.channel = message.channel.id;
               await database.save();
-              message.channel.send('This channel has set to be a logging channel').catch(console.error);
+              message.channel.send('This channel has set to be a logging channel').catch(e => console.error(e.message));
               return;
             }
 
             const channel = message.guild?.channels.cache.find(ch => ch.id === args[2]);
             if (!channel) {
-              message.channel.send('Could not find that channel, provide a valid channel id').catch(console.error);
+              message.channel.send('Could not find that channel, provide a valid channel id').catch(e => console.error(e.message));
               return;
             }
 
             database.log.channel = channel.id;
             await database.save();
-            message.channel.send(`${channel} has set to be a logging channel`).catch(console.error);
+            message.channel.send(`${channel} has set to be a logging channel`).catch(e => console.error(e.message));
             break;
 
           case 'delete':
             database.log.channel = undefined;
             database.save();
-            message.channel.send(`Logging channel removed`).catch(console.error);
+            message.channel.send(`Logging channel removed`).catch(e => console.error(e.message));
             break;
 
           default:
-            message.channel.send(`You didn\'t provide a correct parameter, try using \`set\` or \`delete\``).catch(console.error);
+            message.channel.send(`You didn\'t provide a correct parameter, try using \`set\` or \`delete\``).catch(e => console.error(e.message));
             break;
         }
         break;
@@ -65,7 +65,7 @@ export default class Logger extends Command {
           case 'add':
             args.splice(0, 2);
             if (!args.length) {
-              message.channel.send(`Please provide an event type. Available events: \`${eventTypes}\``).catch(console.error);
+              message.channel.send(`Please provide an event type. Available events: \`${eventTypes}\``).catch(e => console.error(e.message));
               return;
             }
 
@@ -88,19 +88,19 @@ export default class Logger extends Command {
             });
 
             if (!addedEvents.length) {
-              message.channel.send(`No new events added`).catch(console.error);
+              message.channel.send(`No new events added`).catch(e => console.error(e.message));
               return;
             }
 
             await database.save();
-            message.channel.send(`Added logger events:\n\`\`\`${addedEvents.sort().join(', ')}\`\`\``).catch(console.error);
+            message.channel.send(`Added logger events:\n\`\`\`${addedEvents.sort().join(', ')}\`\`\``).catch(e => console.error(e.message));
             break;
 
           case 'remove':
             args.splice(0, 2);
 
             if (!args.length) {
-              message.channel.send(`Please provide an event type. Available events: \`${eventTypes}\``).catch(console.error);
+              message.channel.send(`Please provide an event type. Available events: \`${eventTypes}\``).catch(e => console.error(e.message));
               return;
             }
 
@@ -119,20 +119,20 @@ export default class Logger extends Command {
             });
 
             if (!removedEvents.length) {
-              message.channel.send(`No new events removed`).catch(console.error);
+              message.channel.send(`No new events removed`).catch(e => console.error(e.message));
               return;
             }
 
             await database.save();
-            message.channel.send(`Removed logger events:\n\`\`\`${removedEvents.sort().join(', ')}\`\`\``).catch(console.error);
+            message.channel.send(`Removed logger events:\n\`\`\`${removedEvents.sort().join(', ')}\`\`\``).catch(e => console.error(e.message));
             break;
 
           case 'list':
-            message.channel.send(`All available EventTypes:\n\`\`\`${eventTypes.sort().join(', ')}\`\`\``).catch(console.error);
+            message.channel.send(`All available EventTypes:\n\`\`\`${eventTypes.sort().join(', ')}\`\`\``).catch(e => console.error(e.message));
             break;
 
           default:
-            message.channel.send(`You didn\'t provide a correct parameter, try using \`add\` or \`remove\``).catch(console.error);
+            message.channel.send(`You didn\'t provide a correct parameter, try using \`add\` or \`remove\``).catch(e => console.error(e.message));
             break;
         }
         break;
@@ -140,10 +140,10 @@ export default class Logger extends Command {
       case 'reset':
         database.log = undefined;
         database.save();
-        message.channel.send(`Logger reset to defaults`).catch(console.error);
+        message.channel.send(`Logger reset to defaults`).catch(e => console.error(e.message));
         break;
       default:
-        message.channel.send(`You didn\'t provide a correct parameter, try using \`channel\` or \`event\``).catch(console.error);
+        message.channel.send(`You didn\'t provide a correct parameter, try using \`channel\` or \`event\``).catch(e => console.error(e.message));
         break;
     }
   }

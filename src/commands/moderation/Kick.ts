@@ -16,18 +16,18 @@ export default class Kick extends Command {
 
   public async execute(client: Client, message: Message, args: string[]) {
     if (!args.length) {
-      message.channel.send(`You did not provide a user id`).catch(console.error);
+      message.channel.send(`You did not provide a user id`).catch(e => console.error(e.message));
       return;
     }
 
     const member = message.guild?.members.cache.find(member => member.id === args[0]);
     if (!member) {
-      message.channel.send(`Could not find that user. A valid user id needed`).catch(console.error);
+      message.channel.send(`Could not find that user. A valid user id needed`).catch(e => console.error(e.message));
       return;
     }
 
     if (!member.kickable) {
-      message.channel.send(`Cannot do that. Check my permissions`).catch(console.error);
+      message.channel.send(`Cannot do that. Check my permissions`).catch(e => console.error(e.message));
       return;
     }
 
@@ -35,7 +35,7 @@ export default class Kick extends Command {
     if (!reason.length) reason = 'no specified reason';
 
     member.kick(reason).then(() => {
-      message.channel.send(`\`${member.user.username}\` has been kicked for \`${reason}\``).catch(console.error);
-    }).catch(console.error);
+      message.channel.send(`\`${member.user.username}\` has been kicked for \`${reason}\``).catch(e => console.error(e.message));
+    }).catch(e => console.error(e.message));
   }
 }

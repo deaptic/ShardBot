@@ -19,17 +19,17 @@ export default class Prefix extends Command {
     const database = await guild.database;
 
     if (!args.length) {
-      message.channel.send(`Guild prefix is currently \`${database.prefix}\``).catch(console.error);
+      message.channel.send(`Guild prefix is currently \`${database.prefix}\``).catch(e => console.error(e.message));
       return;
     }
 
     if (args[0].length > 3) {
-      message.channel.send(`Prefix can be only up to 3 characters`).catch(console.error);
+      message.channel.send(`Prefix can be only up to 3 characters`).catch(e => console.error(e.message));
       return;
     }
 
     database.prefix = args[0];
     await database.save();
-    message.channel.send(`Guild prefix has changed to \`${database.prefix}\``).catch(console.error);
+    message.channel.send(`Guild prefix has changed to \`${database.prefix}\``).catch(e => console.error(e.message));
   }
 }

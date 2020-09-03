@@ -12,6 +12,6 @@ export default class Ping extends Command {
   }
 
   public async execute(client: Client, message: Message, args: string[]) {
-    message.channel.send(`My ping is ${client.ws.ping}ms!`).catch(console.error);
+    message.channel.send(`My ping is ${client.ws.ping}ms!`).catch(e => console.error(e.message));
   }
 }

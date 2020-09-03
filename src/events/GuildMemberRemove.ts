@@ -1,4 +1,4 @@
-import { Client, GuildMember } from 'discord.js';
+import { Client, GuildMember, TextChannel } from 'discord.js';
 import Event from '../base/classes/Event';
 import { memberLeft } from '../base/functions/loggerMessages';
 import GuildExtension from '../base/structures/Guild';
@@ -14,8 +14,8 @@ export default class ReadyEvent extends Event {
     const database = await guild.database;
 
     // Log event
-    const logChannel: any = member.guild.channels.cache.find(c => c.id === database.log.channel);
+    const logChannel = member.guild.channels.cache.find(c => c.id === database.log.channel) as TextChannel;
     const hasEvent = database.log.events.find((e: string) => e === 'memberLeft');
-    if (logChannel && hasEvent) logChannel.send(await memberLeft(member)).catch(console.error);
+    if (logChannel && hasEvent) logChannel.send(await memberLeft(member)).catch(e => console.error(e.message));
   }
 }

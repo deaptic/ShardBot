@@ -33,7 +33,7 @@ export default class Help extends Command {
         embed.addField(category, cmds.sort().join('\n'));
       }
 
-      message.channel.send(embed).catch(console.error);
+      message.channel.send(embed).catch(e => console.error(e.message));
       return;
     }
 
@@ -41,7 +41,7 @@ export default class Help extends Command {
     const command = commands.get(commandName) || commands.find(cmd => cmd.aliases.includes(commandName));
 
     if (!command) {
-      message.channel.send('Could not find that command!').catch(console.error);
+      message.channel.send('Could not find that command!').catch(e => console.error(e.message));
       return;
     }
 
@@ -64,6 +64,6 @@ export default class Help extends Command {
       .setDescription(command.description)
       .addField('Usage', `\`\`\`${usages}\`\`\``);
 
-    message.channel.send(embed).catch(console.error);
+    message.channel.send(embed).catch(e => console.error(e.message));
   }
 }

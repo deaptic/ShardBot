@@ -16,6 +16,6 @@ export default class Roll extends Command {
     if (!sides) sides = 6;
     const roll = Math.floor(Math.random() * sides) + 1;
 
-    message.channel.send(`🎲 ${roll} (1 - ${sides})`).catch(console.error);
+    message.channel.send(`🎲 ${roll} (1 - ${sides})`).catch(e => console.error(e.message));
   }
 }

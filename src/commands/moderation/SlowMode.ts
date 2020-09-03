@@ -24,6 +24,6 @@ export default class SlowMode extends Command {
     const channel = message.channel as TextChannel;
     await channel.setRateLimitPerUser(rateLimitPerUser, reason).then(() => {
       message.channel.send(`Slowmode has been set to \`${rateLimitPerUser}s\` for \`${reason}\``);
-    }).catch(console.error);
+    }).catch(e => console.error(e.message));
   }
 }

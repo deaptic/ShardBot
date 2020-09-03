@@ -27,29 +27,29 @@ export default class Live extends Command {
             if (!args[2]) {
               database.liveAnnouncements.channel = message.channel.id;
               await database.save();
-              message.channel.send('This channel has set to be an announcement channel').catch(console.error);
+              message.channel.send('This channel has set to be an announcement channel').catch(e => console.error(e.message));
               return;
             }
 
             const channel = message.guild?.channels.cache.find(ch => ch.id === args[2]);
             if (!channel) {
-              message.channel.send('Could not find that channel, provide a valid channel id').catch(console.error);
+              message.channel.send('Could not find that channel, provide a valid channel id').catch(e => console.error(e.message));
               return;
             }
 
             database.liveAnnouncements.channel = channel.id;
             await database.save();
-            message.channel.send(`${channel} has set to be an announcement channel`).catch(console.error);
+            message.channel.send(`${channel} has set to be an announcement channel`).catch(e => console.error(e.message));
             break;
 
           case 'delete':
             database.liveAnnouncements.channel = undefined;
             database.save();
-            message.channel.send(`Logging channel removed`).catch(console.error);
+            message.channel.send(`Logging channel removed`).catch(e => console.error(e.message));
             break;
 
           default:
-            message.channel.send(`You didn\'t provide a correct parameter, try using \`set\` or \`delete\``).catch(console.error);
+            message.channel.send(`You didn\'t provide a correct parameter, try using \`set\` or \`delete\``).catch(e => console.error(e.message));
             break;
         }
         break;
@@ -59,7 +59,7 @@ export default class Live extends Command {
           case 'add':
             args.splice(0, 2);
             if (!args.length) {
-              message.channel.send(`Please provide an user id`).catch(console.error);
+              message.channel.send(`Please provide an user id`).catch(e => console.error(e.message));
               return;
             }
 
@@ -76,18 +76,18 @@ export default class Live extends Command {
             });
 
             if (!addedUsers.length) {
-              message.channel.send(`No new users added`).catch(console.error);
+              message.channel.send(`No new users added`).catch(e => console.error(e.message));
               return;
             }
 
             await database.save();
-            message.channel.send(`Added users:\n\`\`\`${addedUsers.sort().join(', ')}\`\`\``).catch(console.error);
+            message.channel.send(`Added users:\n\`\`\`${addedUsers.sort().join(', ')}\`\`\``).catch(e => console.error(e.message));
             break;
 
           case 'remove':
             args.splice(0, 2);
             if (!args.length) {
-              message.channel.send(`Please provide an user id`).catch(console.error);
+              message.channel.send(`Please provide an user id`).catch(e => console.error(e.message));
               return;
             }
 
@@ -101,26 +101,26 @@ export default class Live extends Command {
             });
 
             if (!removedUsers.length) {
-              message.channel.send(`No users removed`).catch(console.error);
+              message.channel.send(`No users removed`).catch(e => console.error(e.message));
               return;
             }
 
             await database.save();
-            message.channel.send(`Removed users:\n\`\`\`${removedUsers.sort().join(', ')}\`\`\``).catch(console.error);
+            message.channel.send(`Removed users:\n\`\`\`${removedUsers.sort().join(', ')}\`\`\``).catch(e => console.error(e.message));
             break;
 
           case 'list':
-            message.channel.send(`All available EventTypes:\n\`\`\`${database.liveAnnouncements.users.sort().join(', ')}\`\`\``).catch(console.error);
+            message.channel.send(`All available EventTypes:\n\`\`\`${database.liveAnnouncements.users.sort().join(', ')}\`\`\``).catch(e => console.error(e.message));
             break;
 
           default:
-            message.channel.send(`You didn\'t provide a correct parameter, try using \`add\` or \`remove\``).catch(console.error);
+            message.channel.send(`You didn\'t provide a correct parameter, try using \`add\` or \`remove\``).catch(e => console.error(e.message));
             break;
         }
         break;
 
       default:
-        message.channel.send(`You didn\'t provide a correct parameter, try using \`channel\` or \`user\``).catch(console.error);
+        message.channel.send(`You didn\'t provide a correct parameter, try using \`channel\` or \`user\``).catch(e => console.error(e.message));
         break;
     }
   }
