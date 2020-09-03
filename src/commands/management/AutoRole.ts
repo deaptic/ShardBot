@@ -12,7 +12,7 @@ export default class AutoRole extends Command {
       category: 'Management',
       guildOnly: true,
       userPermissions: ['MANAGE_ROLES'],
-      botPermissions: ['SEND_MESSAGES', 'MANAGE_ROLES'],
+      botPermissions: ['MANAGE_ROLES'],
     });
   }
 

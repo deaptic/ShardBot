@@ -7,7 +7,6 @@ export default class Info extends Command {
       name: 'info',
       description: 'Responds with bot information',
       category: 'Miscellaneous',
-      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

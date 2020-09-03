@@ -10,7 +10,7 @@ export default class Ban extends Command {
       category: 'Moderation',
       guildOnly: true,
       userPermissions: ['BAN_MEMBERS'],
-      botPermissions: ['SEND_MESSAGES', 'BAN_MEMBERS'],
+      botPermissions: ['BAN_MEMBERS'],
     });
   }
 

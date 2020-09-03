@@ -11,7 +11,6 @@ export default class Prefix extends Command {
       category: 'Management',
       guildOnly: true,
       userPermissions: ['ADMINISTRATOR'],
-      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

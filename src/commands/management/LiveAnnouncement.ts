@@ -13,7 +13,6 @@ export default class Live extends Command {
       category: 'Management',
       guildOnly: true,
       userPermissions: ['ADMINISTRATOR'],
-      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

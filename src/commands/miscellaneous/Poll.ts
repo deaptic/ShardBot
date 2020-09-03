@@ -9,7 +9,7 @@ export default class Poll extends Command {
       usage: ['<Topic:Text> <Option[1-10]?:Text>'],
       category: 'Miscellaneous',
       guildOnly: true,
-      botPermissions: ['SEND_MESSAGES', 'ADD_REACTIONS'],
+      botPermissions: ['ADD_REACTIONS'],
     });
   }
 

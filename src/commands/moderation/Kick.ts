@@ -10,7 +10,7 @@ export default class Kick extends Command {
       category: 'Moderation',
       guildOnly: true,
       userPermissions: ['KICK_MEMBERS'],
-      botPermissions: ['SEND_MESSAGES', 'KICK_MEMBERS'],
+      botPermissions: ['KICK_MEMBERS'],
     });
   }
 

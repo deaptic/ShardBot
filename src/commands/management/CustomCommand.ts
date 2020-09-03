@@ -16,7 +16,6 @@ export default class CustomCommand extends Command {
       aliases: ['cc', 'command'],
       guildOnly: true,
       userPermissions: ['ADMINISTRATOR'],
-      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

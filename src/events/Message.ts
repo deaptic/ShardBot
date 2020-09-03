@@ -31,13 +31,13 @@ export default class MessageEvent extends Event {
 
       if (!command.enabled) return;
 
-      if (!command.botPermissions.every(permission => message.guild?.me?.permissions.toArray().includes(permission))) {
-        message.channel.send(`Bot does not have enough permissions!\nPermissions needed: \`${command.botPermissions.join(', ')}\``).catch(console.error);
+      if (!command.userPermissions.every(permission => message.member?.permissions.toArray().includes(permission))) {
+        message.channel.send(`You don't have permissions to run this command!`).catch(console.error);
         return;
       }
 
-      if (!command.userPermissions.every(permission => message.member?.permissions.toArray().includes(permission))) {
-        message.channel.send(`You don't have permissions to run this command!`).catch(console.error);
+      if (!command.botPermissions.every(permission => message.guild?.me?.permissions.toArray().includes(permission))) {
+        message.channel.send(`Bot does not have enough permissions!\nPermissions needed: \`${command.botPermissions.join(', ')}\``).catch(console.error);
         return;
       }
 

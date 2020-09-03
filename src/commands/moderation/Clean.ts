@@ -11,7 +11,7 @@ export default class Ban extends Command {
       aliases: ['clear', 'cl', 'purge'],
       guildOnly: true,
       userPermissions: ['MANAGE_MESSAGES'],
-      botPermissions: ['SEND_MESSAGES', 'MANAGE_MESSAGES'],
+      botPermissions: ['MANAGE_MESSAGES'],
     });
   }
 

@@ -9,7 +9,6 @@ export default class Throw extends Command {
       description: 'Throws things to a specified target',
       usage: ['<Target?:Text>'],
       category: 'Fun',
-      botPermissions: ['SEND_MESSAGES'],
     });
   }
 

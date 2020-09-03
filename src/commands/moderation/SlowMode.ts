@@ -10,7 +10,7 @@ export default class SlowMode extends Command {
       category: 'Moderation',
       guildOnly: true,
       userPermissions: ['MANAGE_CHANNELS'],
-      botPermissions: ['SEND_MESSAGES', 'MANAGE_CHANNELS'],
+      botPermissions: ['MANAGE_CHANNELS'],
     });
   }
 

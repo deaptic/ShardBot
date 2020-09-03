@@ -8,7 +8,6 @@ export default class Roll extends Command {
       description: 'Roll a die',
       usage: ['<Sides?:Number>'],
       category: 'Fun',
-      botPermissions: ['SEND_MESSAGES'],
     });
   }
 
