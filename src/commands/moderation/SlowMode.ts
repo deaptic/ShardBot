@@ -6,7 +6,7 @@ export default class SlowMode extends Command {
     super({
       name: 'slowmode',
       description: 'Enables or Disables slowmode in a channel',
-      usage: ['<Interval?:Number>'],
+      usage: ['<?Interval:Number>'],
       category: 'Moderation',
       guildOnly: true,
       userPermissions: ['MANAGE_CHANNELS'],

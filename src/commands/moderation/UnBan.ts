@@ -6,7 +6,7 @@ export default class UnBan extends Command {
     super({
       name: 'unban',
       description: 'Removes a member ban',
-      usage: ['<User:ID> <Reason?:Text>'],
+      usage: ['<User:ID> <?Reason:Text>'],
       category: 'Moderation',
       guildOnly: true,
       userPermissions: ['BAN_MEMBERS'],

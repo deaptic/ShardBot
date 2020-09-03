@@ -6,7 +6,7 @@ export default class Ban extends Command {
     super({
       name: 'clean',
       description: 'Deletes up to 100 messages from chat',
-      usage: ['<Limit:Number> <User?:ID>'],
+      usage: ['<Limit:Number> <?User:ID>'],
       category: 'Moderation',
       aliases: ['clear', 'cl', 'purge'],
       guildOnly: true,

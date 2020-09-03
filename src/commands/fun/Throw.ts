@@ -6,8 +6,8 @@ export default class Throw extends Command {
   constructor () {
     super({
       name: 'throw',
-      description: 'Throws things to a specified target',
-      usage: ['<Target?:Text>'],
+      description: 'Throws random things to a specified target',
+      usage: ['<?Target:Text>'],
       category: 'Fun',
     });
   }

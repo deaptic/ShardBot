@@ -6,7 +6,7 @@ export default class Roll extends Command {
     super({
       name: 'roll',
       description: 'Roll a die',
-      usage: ['<Sides?:Number>'],
+      usage: ['<?Sides:Number>'],
       category: 'Fun',
     });
   }

@@ -6,7 +6,7 @@ export default class Prefix extends Command {
     super({
       name: 'voiceregion',
       description: 'Show and change guild\'s voice region',
-      usage: ['<Region?:RegionFlag>'],
+      usage: ['<?Region:RegionFlag>'],
       category: 'Management',
       guildOnly: true,
       aliases: ['region'],

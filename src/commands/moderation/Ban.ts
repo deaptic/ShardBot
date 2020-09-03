@@ -6,7 +6,7 @@ export default class Ban extends Command {
     super({
       name: 'ban',
       description: 'Bans a member',
-      usage: ['<User:ID> <Reason?:Text>'],
+      usage: ['<User:ID> <?Reason:Text>'],
       category: 'Moderation',
       guildOnly: true,
       userPermissions: ['BAN_MEMBERS'],

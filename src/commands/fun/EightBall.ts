@@ -7,14 +7,14 @@ export default class EightBall extends Command {
     super({
       name: '8ball',
       description: 'Wisdom from legendary 8ball',
-      usage: ['<Question:Text>'],
+      usage: ['<?Question:Text>'],
       category: 'Fun',
     });
   }
 
   public async execute(client: Client, message: Message, args: string[]) {
     if (!args.length) {
-      message.channel.send(`You didn't provide a question!`);
+      message.channel.send(`You didn't provide a question!`).catch(e => console.error(e.message));
       return;
     }
 

@@ -6,7 +6,7 @@ export default class Kick extends Command {
     super({
       name: 'kick',
       description: 'Kicks a member',
-      usage: ['<User:ID> <Reason?:Text>'],
+      usage: ['<User:ID> <?Reason:Text>'],
       category: 'Moderation',
       guildOnly: true,
       userPermissions: ['KICK_MEMBERS'],
