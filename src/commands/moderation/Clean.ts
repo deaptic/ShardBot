@@ -17,7 +17,7 @@ export default class Ban extends Command {
 
   public async execute(client: Client, message: Message, args: string[]) {
     if (!args.length) {
-      message.channel.send(`You did not provide enough arguments`).catch(e => console.error(e.message));
+      message.channel.send(`You did not provide enough arguments`).catch(e => console.error(e));
       return;
     }
 
@@ -30,16 +30,16 @@ export default class Ban extends Command {
     const channel = message.channel as TextChannel;
     if (!target) {
       channel.bulkDelete(limit).then(messages => {
-        message.channel.send(`Deleted \`${messages.size}\` messages`).catch(e => console.error(e.message));
-      }).catch(e => console.error(e.message));
+        message.channel.send(`Deleted \`${messages.size}\` messages`).catch(e => console.error(e));
+      }).catch(e => console.error(e));
       return;
     }
 
     channel.messages.fetch({ limit }).then(messages => {
       const userMessages = messages.filter(m => m.author.id === target.id);
       channel.bulkDelete(userMessages).then(() => {
-        message.channel.send(`Deleted \`${userMessages.size}\` messages from ${target}`).catch(e => console.error(e.message));
-      }).catch(e => console.error(e.message));
+        message.channel.send(`Deleted \`${userMessages.size}\` messages from ${target}`).catch(e => console.error(e));
+      }).catch(e => console.error(e));
     });
   }
 }

@@ -17,7 +17,7 @@ export default class Prefix extends Command {
 
   public async execute(client: Client, message: Message, args: string[]) {
     if (!args.length) {
-      message.channel.send(`Guild voice region is currently \`${message.guild?.region}\``).catch(e => console.error(e.message));
+      message.channel.send(`Guild voice region is currently \`${message.guild?.region}\``).catch(e => console.error(e));
       return;
     }
 

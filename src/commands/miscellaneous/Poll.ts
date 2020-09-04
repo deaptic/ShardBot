@@ -15,7 +15,7 @@ export default class Poll extends Command {
 
   public async execute(client: Client, message: Message, args: string[]) {
     if (!args.length) {
-      message.channel.send(`You have to provide a topic to start a poll!`).catch(e => console.error(e.message));
+      message.channel.send(`You have to provide a topic to start a poll!`).catch(e => console.error(e));
       return;
     }
 
@@ -25,17 +25,17 @@ export default class Poll extends Command {
         .setAuthor(`${message.author.username} started a simple poll! 📊`, message.author.displayAvatarURL() ?? message.author.defaultAvatarURL)
         .setTitle(args[0].replace(/"/g, ''));
 
-      if (message.deletable) message.delete().catch(e => console.error(e.message));
+      if (message.deletable) message.delete().catch(e => console.error(e));
       message.channel.send(embed).then(async msg => {
         await msg.react('👍');
         await msg.react('👎');
-      }).catch(e => console.error(e.message));
+      }).catch(e => console.error(e));
       return;
     }
 
 
     if (args.length > 11) {
-      message.channel.send('You do really like answers, huh? The limit is ten options per a poll').catch(e => console.error(e.message));
+      message.channel.send('You do really like answers, huh? The limit is ten options per a poll').catch(e => console.error(e));
       return;
     }
 
@@ -51,11 +51,11 @@ export default class Poll extends Command {
       .setTitle(args[0].replace(/"/g, ''))
       .setDescription(options.replace(/"/g, ''));
 
-    if (message.deletable) message.delete().catch(e => console.error(e.message));
+    if (message.deletable) message.delete().catch(e => console.error(e));
     message.channel.send(embed).then(async msg => {
       for (let i = 1; i < args.length; i++) {
         await msg.react(icons[i - 1]);
       }
-    }).catch(e => console.error(e.message));
+    }).catch(e => console.error(e));
   }
 }

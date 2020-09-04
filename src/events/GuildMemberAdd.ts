@@ -17,7 +17,7 @@ export default class ReadyEvent extends Event {
     // Log event
     const logChannel = member.guild.channels.cache.find(c => c.id === database.log.channel) as TextChannel;
     const hasEvent = database.log.events.find((e: string) => e === 'memberJoin');
-    if (logChannel && hasEvent) logChannel.send(await memberJoin(member)).catch(e => console.error(e.message));
+    if (logChannel && hasEvent) logChannel.send(await memberJoin(member)).catch(e => console.error(e));
 
     // Assign role to a new member
     autoRole(member);

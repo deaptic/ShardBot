@@ -11,6 +11,6 @@ export default class Ping extends Command {
   }
 
   public async execute(client: Client, message: Message, args: string[]) {
-    message.channel.send(await client.generateInvite(470805751)).catch(e => console.error(e.message));
+    message.channel.send(await client.generateInvite(470805751)).catch(e => console.error(e));
   }
 }

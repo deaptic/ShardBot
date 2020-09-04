@@ -14,13 +14,13 @@ export default class EightBall extends Command {
 
   public async execute(client: Client, message: Message, args: string[]) {
     if (!args.length) {
-      message.channel.send(`You didn't provide a question!`).catch(e => console.error(e.message));
+      message.channel.send(`You didn't provide a question!`).catch(e => console.error(e));
       return;
     }
 
     const index = Math.floor(Math.random() * answers.length);
     const answer = answers[index];
 
-    message.channel.send(answer).catch(e => console.error(e.message));
+    message.channel.send(answer).catch(e => console.error(e));
   }
 }

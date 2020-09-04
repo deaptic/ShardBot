@@ -16,6 +16,6 @@ export default class GuildCreateEvent extends Event {
     // Log event
     const logChannel = guild.channels.cache.find(c => c.id === database.log.channel) as TextChannel;
     const hasEvent = database.log.events.find((e: string) => e === 'memberUnbanned');
-    if (logChannel && hasEvent) logChannel.send(await memberUnbanned(guild, user)).catch(e => console.error(e.message));
+    if (logChannel && hasEvent) logChannel.send(await memberUnbanned(guild, user)).catch(e => console.error(e));
   }
 }

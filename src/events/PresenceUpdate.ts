@@ -36,12 +36,12 @@ export default class ReadyEvent extends Event {
     if (guildHasRole && botHasRolesPermission && guildHasRole.position < botHasHighestRole) {
       // Add Role
       if (isStreaming && !memberHasRole) {
-        newPresence.member?.roles.add(guildHasRole).catch(e => console.error(e.message));
+        newPresence.member?.roles.add(guildHasRole).catch(e => console.error(e));
       }
 
       // Remove role
       if (!isStreaming && memberHasRole) {
-        newPresence.member?.roles.remove(guildHasRole).catch(e => console.error(e.message));
+        newPresence.member?.roles.remove(guildHasRole).catch(e => console.error(e));
       }
     }
   }

@@ -17,7 +17,7 @@ export default class MessageEvent extends Event {
 
     for (const command of database.customCommands) {
       if (message.content.startsWith(command.name)) {
-        message.channel.send(command.content).catch(e => console.error(e.message));
+        message.channel.send(command.content).catch(e => console.error(e));
       }
     }
 
@@ -32,17 +32,17 @@ export default class MessageEvent extends Event {
       if (!command.enabled) return;
 
       if (!command.userPermissions.every(permission => message.member?.permissions.toArray().includes(permission))) {
-        message.channel.send(`You don't have permissions to run this command!`).catch(e => console.error(e.message));
+        message.channel.send(`You don't have permissions to run this command!`).catch(e => console.error(e));
         return;
       }
 
       if (!command.botPermissions.every(permission => message.guild?.me?.permissions.toArray().includes(permission))) {
-        message.channel.send(`Bot does not have enough permissions!\nPermissions needed: \`${command.botPermissions.join(', ')}\``).catch(e => console.error(e.message));
+        message.channel.send(`Bot does not have enough permissions!\nPermissions needed: \`${command.botPermissions.join(', ')}\``).catch(e => console.error(e));
         return;
       }
 
       if (command.guildOnly && message.channel.type === 'dm') {
-        message.channel.send(`Command you are trying to execute is only accessible on guild channel!`).catch(e => console.error(e.message));
+        message.channel.send(`Command you are trying to execute is only accessible on guild channel!`).catch(e => console.error(e));
         return;
       }
 
@@ -55,7 +55,7 @@ export default class MessageEvent extends Event {
         command.execute(client, message, args);
       } catch (e) {
         console.error(e);
-        message.channel.send(`There was an error trying to execute that command!`).catch(e => console.error(e.message));
+        message.channel.send(`There was an error trying to execute that command!`).catch(e => console.error(e));
       }
     }
   }

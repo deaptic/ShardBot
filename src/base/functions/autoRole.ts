@@ -16,7 +16,7 @@ export default async function autoRole(member: GuildMember) {
 
     if (isRole && !hasRole) {
       if (botHighestRole.position < isRole.position) return;
-      member.roles.add(isRole).catch(e => console.error(e.message));
+      member.roles.add(isRole).catch(e => console.error(e));
     }
   }
 }

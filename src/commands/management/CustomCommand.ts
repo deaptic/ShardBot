@@ -26,7 +26,7 @@ export default class CustomCommand extends Command {
     switch (args[0]) {
       case 'add':
         if (args.length < 3) {
-          message.channel.send('You have to provide command name and some content to it!').catch(e => console.error(e.message));
+          message.channel.send('You have to provide command name and some content to it!').catch(e => console.error(e));
           return;
         }
 
@@ -35,12 +35,12 @@ export default class CustomCommand extends Command {
           database.customCommands.find((cmd: any) => cmd.name === args[1]);
 
         if (hasCommand) {
-          message.channel.send('Command name already exists!').catch(e => console.error(e.message));
+          message.channel.send('Command name already exists!').catch(e => console.error(e));
           return;
         }
 
         if (database.customCommands.length > 50) {
-          message.channel.send('This guild already has maximum number of custom commands!').catch(e => console.error(e.message));
+          message.channel.send('This guild already has maximum number of custom commands!').catch(e => console.error(e));
           return;
         }
 
@@ -51,29 +51,29 @@ export default class CustomCommand extends Command {
 
         database.customCommands.push(newCommand);
         await database.save();
-        message.channel.send(`\`${newCommand.name}\` command has been added!`).catch(e => console.error(e.message));
+        message.channel.send(`\`${newCommand.name}\` command has been added!`).catch(e => console.error(e));
         break;
 
       case 'remove':
         if (!args[1]) {
-          message.channel.send('You have to provide command name you want to remove!').catch(e => console.error(e.message));
+          message.channel.send('You have to provide command name you want to remove!').catch(e => console.error(e));
           return;
         }
 
         const isCommand = database.customCommands.find((cmd: any) => cmd.name === args[1]);
         if (!isCommand) {
-          message.channel.send('Could not find that command!').catch(e => console.error(e.message));
+          message.channel.send('Could not find that command!').catch(e => console.error(e));
           return;
         }
 
         database.customCommands.pull(isCommand);
         await database.save();
-        message.channel.send('Command has been removed!').catch(e => console.error(e.message));
+        message.channel.send('Command has been removed!').catch(e => console.error(e));
         break;
 
       case 'list':
         if (!database.customCommands.length) {
-          message.channel.send(`Custom commands list is empty`).catch(e => console.error(e.message));
+          message.channel.send(`Custom commands list is empty`).catch(e => console.error(e));
           return;
         }
 
@@ -81,11 +81,11 @@ export default class CustomCommand extends Command {
         database.customCommands.forEach((cmd: any) => {
           cmds.push(cmd.name);
         });
-        message.channel.send(`List of all custom commands\n\`\`\`${cmds.sort().join(', ')}\`\`\``).catch(e => console.error(e.message));
+        message.channel.send(`List of all custom commands\n\`\`\`${cmds.sort().join(', ')}\`\`\``).catch(e => console.error(e));
         break;
 
       default:
-        message.channel.send(`You didn\'t provide a correct parameter, try using \`add\` or \`remove\``).catch(e => console.error(e.message));
+        message.channel.send(`You didn\'t provide a correct parameter, try using \`add\` or \`remove\``).catch(e => console.error(e));
         break;
     }
   }

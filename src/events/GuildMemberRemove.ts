@@ -16,6 +16,6 @@ export default class ReadyEvent extends Event {
     // Log event
     const logChannel = member.guild.channels.cache.find(c => c.id === database.log.channel) as TextChannel;
     const hasEvent = database.log.events.find((e: string) => e === 'memberLeft');
-    if (logChannel && hasEvent) logChannel.send(await memberLeft(member)).catch(e => console.error(e.message));
+    if (logChannel && hasEvent) logChannel.send(await memberLeft(member)).catch(e => console.error(e));
   }
 }

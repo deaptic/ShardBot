@@ -23,6 +23,6 @@ export default class MessageDeleteEvent extends Event {
     // Ignore commands
     if (message.content.startsWith(database.prefix)) return;
 
-    if (logChannel && hasEvent) logChannel.send(await messageDelete(message)).catch(e => console.error(e.message));
+    if (logChannel && hasEvent) logChannel.send(await messageDelete(message)).catch(e => console.error(e));
   }
 }
