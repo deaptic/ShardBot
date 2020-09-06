@@ -13,10 +13,10 @@ export default class Command {
   public execute?(client: Client, message: Message, args: string[]): Promise<void>;
 
   constructor ({
-    name = 'No name provided',
+    name = 'unknown',
     description = 'No description',
     usage = new Array(),
-    category = 'Miscellaneous',
+    category = 'Uncategorized',
     enabled = true,
     guildOnly = false,
     aliases = new Array(),
