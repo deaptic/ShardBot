@@ -29,7 +29,7 @@ export default class Help extends Command {
         .setAuthor('Help', client.user?.avatarURL() || client.user?.defaultAvatarURL)
         .setDescription(
           `Minimalist and secure multipurpose discord bot
-          To get a more detailed description of a command, use \`${database.prefix}help <command>\`
+          To get a more detailed description of a command use \`${database.prefix}help <command>\`
           
           **Need help? [Support](https://discord.gg/mHa6W86 'Link to Shardie's support server')**`
         )
