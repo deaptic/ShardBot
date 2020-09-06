@@ -4,7 +4,7 @@ import GuildExtension from '../../base/structures/Guild';
 export default class Live extends Command {
   constructor () {
     super({
-      name: 'live',
+      name: 'liveannouncement',
       description: 'Sent announcement when specified users go live',
       usage: [
         '<channel> <set/delete> <Channel:ID>',

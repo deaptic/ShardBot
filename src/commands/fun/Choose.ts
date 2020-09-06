@@ -17,9 +17,10 @@ export default class Choose extends Command {
       return;
     }
 
+    const author = message.author;
     const index = Math.floor(Math.random() * args.length);
     const chosen = args[index];
 
-    message.channel.send(`I'll choose: \`${chosen}\``).catch(e => console.error(e));
+    message.channel.send(`> ${args.join(' ')}\n${author} ${chosen}`).catch(e => console.error(e));
   }
 }

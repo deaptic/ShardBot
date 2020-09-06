@@ -9,7 +9,7 @@ export default class Prefix extends Command {
       usage: ['<?Region:RegionFlag>'],
       category: 'Management',
       guildOnly: true,
-      aliases: ['region'],
+      aliases: ['vcregion', 'region'],
       userPermissions: ['MANAGE_GUILD'],
       botPermissions: ['MANAGE_GUILD'],
     });

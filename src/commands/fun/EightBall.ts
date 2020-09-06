@@ -18,9 +18,10 @@ export default class EightBall extends Command {
       return;
     }
 
+    const author = message.author;
     const index = Math.floor(Math.random() * answers.length);
     const answer = answers[index];
 
-    message.channel.send(answer).catch(e => console.error(e));
+    message.channel.send(`> ${args.join(' ')}\n${author} ${answer}`).catch(e => console.error(e));
   }
 }

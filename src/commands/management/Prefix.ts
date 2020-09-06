@@ -6,7 +6,7 @@ export default class Prefix extends Command {
   constructor () {
     super({
       name: 'prefix',
-      description: 'Show and manage guild prefix',
+      description: 'Manage guild prefix',
       usage: ['<?Prefix:Text>'],
       category: 'Management',
       guildOnly: true,
