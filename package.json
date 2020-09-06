@@ -1,6 +1,6 @@
 {
   "name": "shardbot",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Minimalist and secure multipurpose discord bot",
   "main": "dist/index.js",
   "scripts": {
