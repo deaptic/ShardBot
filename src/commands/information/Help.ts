@@ -1,6 +1,7 @@
 import Command from '../../base/classes/Command';
 import { Client, Message, MessageEmbed } from "discord.js";
 import { commands } from '../../base/collections/commands';
+import GuildExtension from '../../base/structures/Guild';
 
 export default class Help extends Command {
   constructor () {
@@ -8,11 +9,15 @@ export default class Help extends Command {
       name: 'help',
       description: 'Shows help about all or one specific command',
       usage: ['<?Command:Text>'],
-      category: 'Miscellaneous',
+      category: 'Information',
+      botPermissions: ['EMBED_LINKS']
     });
   }
 
   public async execute(client: Client, message: Message, args: string[]) {
+    const guild = message.guild as GuildExtension;
+    const database = await guild.database;
+
     if (!args.length) {
       const categories = new Set();
       commands.forEach(cmd => {
@@ -20,17 +25,25 @@ export default class Help extends Command {
       });
 
       const embed = new MessageEmbed()
-        .setTitle('Commands');
+        .setColor('BLUE')
+        .setAuthor('Help', client.user?.avatarURL() || client.user?.defaultAvatarURL)
+        .setDescription(
+          `Minimalist and secure multipurpose discord bot
+          To get a more detailed description of a command, use \`${database.prefix}help <command>\`
+          
+          **Need help? [Support](https://discord.gg/mHa6W86 'Link to Shardie's support server')**`
+        )
+        .addField('\u200B', '\u200B');
 
       for await (const category of categories) {
         const cmds: string[] = [];
-        commands.sort().forEach(cmd => {
+        commands.forEach(cmd => {
           if (cmd.category === category) {
-            cmds.push(`\`${cmd.name}\` - ${cmd.description}`);
+            cmds.push(`\`${cmd.name}\``);
           }
         });
 
-        embed.addField(category, cmds.sort().join('\n'));
+        embed.addField(category, cmds.sort().join(' '));
       }
 
       message.channel.send(embed).catch(e => console.error(e));
@@ -60,6 +73,7 @@ export default class Help extends Command {
     }
 
     const embed = new MessageEmbed()
+      .setColor('BLUE')
       .setTitle(`${command.name} ${aliases}`)
       .setDescription(command.description)
       .addField('Usage', `\`\`\`${usages}\`\`\``);
