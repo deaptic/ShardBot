@@ -6,7 +6,8 @@ export default class Info extends Command {
     super({
       name: 'info',
       description: 'Responds with bot information',
-      category: 'Miscellaneous',
+      category: 'Information',
+      botPermissions: ['EMBED_LINKS']
     });
   }
 
