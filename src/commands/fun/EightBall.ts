@@ -1,6 +1,6 @@
 import Command from '../../base/classes/Command';
 import { Client, Message } from "discord.js";
-import { answers } from '../../base/data/EightBall.json';
+import Axios from 'axios';
 
 export default class extends Command {
   constructor () {
@@ -19,8 +19,9 @@ export default class extends Command {
     }
 
     const author = message.author;
-    const index = Math.floor(Math.random() * answers.length);
-    const answer = answers[index];
+    const params = encodeURIComponent(args.join(' '));
+    const response = await Axios.get(`https://8ball.delegator.com/magic/JSON/${params}`);
+    const answer = response.data.magic.answer;
 
     message.channel.send(`> ${args.join(' ')}\n${author} ${answer}`).catch(e => console.error(e));
   }
