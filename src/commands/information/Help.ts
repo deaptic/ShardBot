@@ -19,21 +19,16 @@ export default class Help extends Command {
     const database = await guild.database;
 
     if (!args.length) {
-      const categories = new Set();
-      commands.forEach(cmd => {
-        categories.add(cmd.category);
-      });
-
       const embed = new MessageEmbed()
         .setColor('BLUE')
         .setAuthor('Help', client.user?.avatarURL() || client.user?.defaultAvatarURL)
         .setDescription(
-          `Minimalist and secure multipurpose discord bot
-          To get a more detailed description of a command use \`${database.prefix}help <command>\`
-          
-          **Need help? [Support](https://discord.gg/mHa6W86 'Link to Shardie's support server')**`
+          `Minimalist and secure multipurpose discord bot\nTo get a more detailed description of a command use \`${database.prefix}help <command>\`\n\n**Need help? [Support](https://discord.gg/mHa6W86 'Link to Shardie's support server')**`
         )
         .addField('\u200B', '\u200B');
+
+      const categories = new Set();
+      commands.forEach(cmd => categories.add(cmd.category));
 
       for await (const category of categories) {
         const cmds: string[] = [];
