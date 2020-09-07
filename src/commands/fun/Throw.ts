@@ -2,7 +2,7 @@ import Command from '../../base/classes/Command';
 import { Client, Message } from "discord.js";
 import { throwables } from '../../base/data/Throwables.json';
 
-export default class Throw extends Command {
+export default class extends Command {
   constructor () {
     super({
       name: 'throw',

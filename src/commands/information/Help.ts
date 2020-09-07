@@ -3,7 +3,7 @@ import { Client, Message, MessageEmbed } from "discord.js";
 import { commands } from '../../base/collections/commands';
 import GuildExtension from '../../base/structures/Guild';
 
-export default class Help extends Command {
+export default class extends Command {
   constructor () {
     super({
       name: 'help',
@@ -22,22 +22,15 @@ export default class Help extends Command {
       const embed = new MessageEmbed()
         .setColor('BLUE')
         .setAuthor('Help', client.user?.avatarURL() || client.user?.defaultAvatarURL)
-        .setDescription(
-          `Minimalist and secure multipurpose discord bot\nTo get a more detailed description of a command use \`${database.prefix}help <command>\`\n\n**Need help? [Support](https://discord.gg/mHa6W86 'Link to Shardie's support server')**`
-        )
+        .setDescription(`Minimalist and secure multipurpose discord bot\nTo get a more detailed description of a command use \`${database.prefix}help <command>\`\n\n**Need help? [Support](https://discord.gg/mHa6W86 'Link to Shardie's support server')**`)
         .addField('\u200B', '\u200B');
 
       const categories = new Set();
       commands.forEach(cmd => categories.add(cmd.category));
-
-      for await (const category of categories) {
+      for (const category of categories) {
+        const filtered = commands.filter(cmd => cmd.category === category);
         const cmds: string[] = [];
-        commands.forEach(cmd => {
-          if (cmd.category === category) {
-            cmds.push(`\`${cmd.name}\``);
-          }
-        });
-
+        filtered.forEach(cmd => cmds.push(`\`${cmd.name}\``));
         embed.addField(category, cmds.sort().join(' '));
       }
 
@@ -55,7 +48,7 @@ export default class Help extends Command {
 
     let usages = '';
     if (command.usage.length) {
-      for await (const usage of command.usage) {
+      for (const usage of command.usage) {
         usages += `${command.name} ${usage}\n`;
       }
     } else {

@@ -2,7 +2,7 @@ import Command from '../../base/classes/Command';
 import { Client, Message } from "discord.js";
 import Axios from 'axios';
 
-export default class Pun extends Command {
+export default class extends Command {
   constructor () {
     super({
       name: 'pun',

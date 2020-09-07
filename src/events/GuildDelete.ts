@@ -3,7 +3,7 @@ import Event from '../base/classes/Event';
 import presenceUpdater from '../base/functions/presenceUpdater';
 import GuildExtension from '../base/structures/Guild';
 
-export default class GuildDeleteEvent extends Event {
+export default class extends Event {
 
   constructor () {
     super('guildDelete');

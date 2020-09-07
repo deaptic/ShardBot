@@ -2,7 +2,7 @@ import Command from '../../base/classes/Command';
 import { Client, Message, MessageEmbed } from "discord.js";
 import Axios from 'axios';
 
-export default class Urban extends Command {
+export default class extends Command {
   constructor () {
     super({
       name: 'urban',

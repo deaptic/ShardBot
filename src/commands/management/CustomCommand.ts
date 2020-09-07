@@ -3,7 +3,7 @@ import { Client, Message } from "discord.js";
 import GuildExtension from '../../base/structures/Guild';
 import { commands } from '../../base/collections/commands';
 
-export default class CustomCommand extends Command {
+export default class extends Command {
   constructor () {
     super({
       name: 'customcommand',

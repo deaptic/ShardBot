@@ -2,7 +2,7 @@ import Command from '../../base/classes/Command';
 import { Client, Message } from "discord.js";
 import GuildExtension from '../../base/structures/Guild';
 
-export default class Prefix extends Command {
+export default class extends Command {
   constructor () {
     super({
       name: 'prefix',

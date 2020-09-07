@@ -1,7 +1,7 @@
 import Command from '../../base/classes/Command';
 import { Client, Message, MessageEmbed } from "discord.js";
 
-export default class Info extends Command {
+export default class extends Command {
   constructor () {
     super({
       name: 'info',

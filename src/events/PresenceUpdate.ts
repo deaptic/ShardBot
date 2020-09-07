@@ -2,7 +2,7 @@ import { Client, Presence, TextChannel } from 'discord.js';
 import Event from '../base/classes/Event';
 import GuildExtension from '../base/structures/Guild';
 
-export default class ReadyEvent extends Event {
+export default class extends Event {
 
   constructor () {
     super('presenceUpdate');

@@ -3,7 +3,7 @@ import { Client, Message } from "discord.js";
 import GuildExtension from '../../base/structures/Guild';
 import autoRole from '../../base/functions/autoRole';
 
-export default class AutoRole extends Command {
+export default class extends Command {
   constructor () {
     super({
       name: 'autorole',

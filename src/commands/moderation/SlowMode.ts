@@ -1,7 +1,7 @@
 import Command from '../../base/classes/Command';
 import { Client, Message, TextChannel } from "discord.js";
 
-export default class SlowMode extends Command {
+export default class extends Command {
   constructor () {
     super({
       name: 'slowmode',

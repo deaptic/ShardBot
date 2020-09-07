@@ -3,7 +3,7 @@ import Event from '../base/classes/Event';
 import { messageDelete } from '../base/functions/loggerMessages';
 import GuildExtension from '../base/structures/Guild';
 
-export default class MessageDeleteEvent extends Event {
+export default class extends Event {
 
   constructor () {
     super('messageDelete');

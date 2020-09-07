@@ -3,7 +3,7 @@ import Event from '../base/classes/Event';
 import autoRole from '../base/functions/autoRole';
 import presenceUpdater from '../base/functions/presenceUpdater';
 
-export default class ReadyEvent extends Event {
+export default class extends Event {
 
   constructor () {
     super('ready');
