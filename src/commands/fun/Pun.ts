@@ -15,6 +15,6 @@ export default class extends Command {
   public async execute(client: Client, message: Message, args: string[]) {
     const response = await Axios.get('https://icanhazdadjoke.com', { headers: { 'Accept': 'application/json' } });
     const joke = response.data.joke;
-    message.reply(joke);
+    message.reply(joke).catch(e => console.error(e));
   }
 }

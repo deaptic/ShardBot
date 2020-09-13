@@ -6,7 +6,7 @@ export default class extends Command {
     super({
       name: 'choose',
       description: 'Chooses between given arguments',
-      usage: ['<Argument[...]:Text>'],
+      usage: ['<Options[...]:Text>'],
       category: 'Fun',
     });
   }
@@ -17,10 +17,9 @@ export default class extends Command {
       return;
     }
 
-    const author = message.author;
     const index = Math.floor(Math.random() * args.length);
     const chosen = args[index];
 
-    message.channel.send(`> ${args.join(' ')}\n${author} ${chosen}`).catch(e => console.error(e));
+    message.reply(chosen).catch(e => console.error(e));
   }
 }

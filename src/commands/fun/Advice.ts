@@ -14,6 +14,6 @@ export default class extends Command {
   public async execute(client: Client, message: Message, args: string[]) {
     const response = await Axios.get('https://api.adviceslip.com/advice');
     const advice = response.data.slip.advice;
-    message.reply(advice);
+    message.reply(advice).catch(e => console.error(e));
   }
 }
